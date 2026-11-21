@@ -1,6 +1,6 @@
 {
   "projectId": "demo-project",
-  "projectRevision": 3,
+  "projectRevision": 4,
   "script": "大家好，今天介绍一个概念：复利。\n复利就是利滚利，收益会产生新的收益。\n举个例子，每天进步百分之一，一年后会变成原来的三十七倍。\n左侧是单利，右侧是复利，对比非常明显。\n关键在于坚持，时间会放大每一次小小的进步。\n这就是复利的力量。",
   "scenes": [
     {
@@ -9,7 +9,14 @@
       "startMs": 0,
       "endMs": 3000,
       "visualIntent": "开场标题：关键词「复利」揭示，极简科技风格",
-      "assets": [],
+      "assets": [
+        {
+          "role": "background",
+          "assetId": "b529a5ba5ce1",
+          "localPath": "projects/demo-project/assets/42dee839_poster.jpg",
+          "description": "poster.jpg"
+        }
+      ],
       "styleId": "minimal-tech"
     },
     {
@@ -58,5 +65,5 @@
       "styleId": "minimal-tech"
     }
   ],
-  "updatedAt": "2026-11-21T14:58:15.853017+00:00"
+  "updatedAt": "2026-11-21T15:00:08.274073+00:00"
 }

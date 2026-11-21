@@ -1,4 +1,4 @@
-# Author: Codex | Modified: 2026-11-21 23:30:00 +08:00 | Bind approved candidate props to rendering.
+# Author: Codex | Modified: 2026-11-21 23:55:00 +08:00 | Bind approved candidate props to rendering.
 """Motion Studio 本地 CLI。
 
 Codex Desktop 通过本 Skill 调用此 CLI 完成本地数据操作、检索、验证与渲染调用。
@@ -602,6 +602,31 @@ def _scene_media_props(scene) -> dict:
     return {}
 
 
+def _stage_presenter_source(scene, props: dict) -> str:
+    """Stage a local presenter video and reject missing footage, unsafe paths or insufficient duration."""
+    import hashlib,shutil
+    raw=props.get("presenterSrc","")
+    if not raw:raise ValueError("真人转场正式渲染需要选择真实口播视频，演示人物仅用于模板预览")
+    if not isinstance(raw,str) or raw.startswith(("/","\\","http:","https:")) or ".." in raw.replace("\\","/").split("/"):
+        raise ValueError("口播视频必须使用本地项目素材或 Remotion public 相对路径")
+    root=lib.library_root().parent.resolve() if raw.startswith(("projects/","library/")) else (_remotion_root()/"public").resolve()
+    source=(root/raw).resolve()
+    if not source.is_relative_to(root) or not source.is_file() or source.suffix.lower() not in (".mp4",".mov",".webm",".mkv"):
+        raise ValueError("口播视频文件不存在或类型无效")
+    probe=subprocess.run(["ffprobe","-v","error","-show_entries","format=duration","-of","json",str(source)],capture_output=True,text=True,encoding="utf-8")
+    if probe.returncode:raise ValueError("无法读取口播视频时长")
+    start=props.get("sourceStartFrame",0)
+    import math
+    if isinstance(start,bool) or not isinstance(start,(int,float)) or not math.isfinite(start) or start<0 or int(start)!=start:raise ValueError("源视频起始帧必须是非负整数")
+    required=start/30+math.ceil((scene.endMs-scene.startMs)*.03)/30
+    if float(json.loads(probe.stdout)["format"]["duration"])+.001<required:raise ValueError("口播视频剩余时长不足，不能冻结尾帧代替真实口播")
+    name=hashlib.sha256(source.read_bytes()).hexdigest()+source.suffix.lower()
+    target=_remotion_root()/"public"/"scene-assets"/name
+    target.parent.mkdir(parents=True,exist_ok=True)
+    if not target.exists():shutil.copyfile(source,target)
+    return "scene-assets/"+name
+
+
 def _selected_candidate_props(project_id, scene_id, approval) -> dict:
     """Resolve the selected candidate by ID and version; missing recommendations yield defaults."""
     try:
@@ -664,6 +689,16 @@ def _build_scene_props(scene, meta, proposed_props: dict | None = None) -> dict:
         props.update(proposed_props)
     props["styleId"] = scene.styleId
     props.update(_scene_media_props(scene))
+    if meta.templateId.startswith("PRESENTER-"):
+        props["presenterSrc"]=_stage_presenter_source(scene,props)
+        props.setdefault("_editor",{"startMs":0,"endMs":scene.endMs-scene.startMs,"layout":{"x":0,"y":0,"scale":1,"transparent":False}})
+        editor=props["_editor"]
+        if editor["startMs"]!=0 or editor["endMs"]!=scene.endMs-scene.startMs or any(editor["layout"].get(k,default)!=default for k,default in (("x",0),("y",0),("scale",1))):
+            raise ValueError("真人转场必须覆盖整段且保持全屏终点；请调整人物小窗参数")
+        if meta.templateId=="PRESENTER-OUT" and props.get("transitionAt",60)<24:raise ValueError("需预留24帧收起知识卡片")
+        available=(props["_editor"]["endMs"]-props["_editor"]["startMs"])*.03
+        if props.get("transitionAt",30 if meta.templateId=="PRESENTER-IN" else 60)+props.get("transitionFrames",26)>available-1:
+            raise ValueError("真人转场时间超出动效出现区间，请调整开始帧或延长区间")
     if props.get("backgroundImage") and not props.get("_editor"):
         props["_editor"]={"startMs":0,"endMs":scene.endMs-scene.startMs,"layout":{"x":0,"y":0,"scale":1,"transparent":False}}
     return props

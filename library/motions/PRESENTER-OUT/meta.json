@@ -1,0 +1,139 @@
+{
+  "templateId": "PRESENTER-OUT",
+  "name": "右下角 → 真人 · 回到讲述",
+  "description": "知识卡片先收起，右下角人物平滑放大回全屏。",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "PresenterTransition.tsx",
+  "compositionId": "PRESENTER-OUT",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "sourceAvailable": true,
+  "sourceName": "Motion Studio",
+  "sourceUrl": "",
+  "originalId": "",
+  "adaptation": "Motion Studio 原创。单一视频实例持续播放，保持原声；无来源素材时使用自绘人物并标注 DEMO DATA。",
+  "useCases": [
+    "真人口播",
+    "知识讲解",
+    "画中画",
+    "连续转场"
+  ],
+  "notUseCases": [
+    "透明卡片单层导出（需同时控制真人视频）"
+  ],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 180,
+  "minDurationFrames": 90,
+  "maxDurationFrames": 1800,
+  "requiredAssets": [
+    "video"
+  ],
+  "optionalAssets": [],
+  "params": [
+    {
+      "name": "presenterSrc",
+      "type": "string",
+      "label": "口播视频（项目素材路径）",
+      "default": "",
+      "description": "留空仅显示明确标记的演示人物；正式渲染必须提供真实本地视频。"
+    },
+    {
+      "name": "sourceStartFrame",
+      "type": "number",
+      "label": "源视频起始帧（30fps）",
+      "default": 0,
+      "min": 0,
+      "max": 1080000
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "label": "讲解标题",
+      "default": "把复杂的知识，讲清楚"
+    },
+    {
+      "name": "labels",
+      "type": "array",
+      "label": "知识卡片（最多三项）",
+      "default": [
+        "一个核心概念",
+        "一张图讲明白",
+        "回到观点本身"
+      ]
+    },
+    {
+      "name": "transitionAt",
+      "type": "number",
+      "label": "人物转场开始帧（30fps）",
+      "default": 60,
+      "min": 24,
+      "max": 1800
+    },
+    {
+      "name": "transitionFrames",
+      "type": "number",
+      "label": "人物转场帧数（30fps）",
+      "default": 26,
+      "min": 8,
+      "max": 90
+    },
+    {
+      "name": "pipX",
+      "type": "number",
+      "label": "人物小窗水平位置",
+      "default": 1104,
+      "min": 0,
+      "max": 1440
+    },
+    {
+      "name": "pipY",
+      "type": "number",
+      "label": "人物小窗垂直位置",
+      "default": 672,
+      "min": 0,
+      "max": 1080
+    },
+    {
+      "name": "pipWidth",
+      "type": "number",
+      "label": "人物小窗宽度",
+      "default": 288,
+      "min": 120,
+      "max": 900
+    },
+    {
+      "name": "pipHeight",
+      "type": "number",
+      "label": "人物小窗高度",
+      "default": 360,
+      "min": 120,
+      "max": 900
+    },
+    {
+      "name": "cropX",
+      "type": "number",
+      "label": "人物裁切焦点 X（%）",
+      "default": 50,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "name": "cropY",
+      "type": "number",
+      "label": "人物裁切焦点 Y（%）",
+      "default": 43,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "tags": [
+    "真人口播",
+    "画中画",
+    "右下角",
+    "回到真人"
+  ],
+  "category": "PRESENTER"
+}

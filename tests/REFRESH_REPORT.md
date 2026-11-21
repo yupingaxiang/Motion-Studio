@@ -58,3 +58,19 @@
 - Browser: at frame90, dragging COMP left card produced x104/y-74; right card and title bounding rects stayed identical. Saved and reloaded, selected left card and verified x104/y-74 persisted; restored test offsets to zero and saved. Homepage editor link opened editor route successfully. Demo S04 now contains a neutral saved editor draft.
 - Real rendered still .tmp/element-edit.png shows left card independently shifted +100/-90 while right card stays in place.
 - 11 Python tests passed including new element validation/persistence and CLI handoff; frontend and Remotion typechecks/build passed.
+
+
+## 2026-11-21 Asset folders and background binding repair
+- Diagnosed: demo project had zero images; public registry had video only. Original background was a 10% multiply overlay and only native first four templates consumed it without editor overrides.
+- Connected folder source filtering, explicit pending/bound states, direct image import, focus/manual refresh, lock/revision checks and editor binding controls; unsaved editor changes block background mutation. Project cards expose assets link.
+- Full-opacity scene background below marked template canvases; card surfaces retained. CLI routes all bound background scenes through shared SCENE-EDIT, including Fred/no manual overrides.
+- Browser imported own DATA-001 poster into demo-project; project/shared filtering worked, bound image loaded at natural width1440 with opacity1, refresh preserved binding, clear removed background DOM. Test binding cleared; sample poster remains in project assets for trying the workflow. Storyboard revision advanced normally; no recommendations/approvals were rewritten.
+- Real Fred background still: .tmp/background-fixed.png. 16 Python regressions passed; frontend/Remotion typechecks and build passed.
+
+
+## 2026-11-21 Paired presenter transition templates
+- Added original PRESENTER-IN/PRESENTER-OUT templates, gallery category, metadata, editor selection/source-video fields and real MP4/poster files (6s,180 frames,1440x1080). Demo stand-in marked DEMO DATA; formal rendering requires a real local presenter source.
+- One video instance carries continuous original audio. Cards retract fully before return expansion; PiP offsets affect the small endpoint only. Full scene interval/identity overall layout enforced, ceil frame duration matches composition length.
+- Read-only reviewer found interval/audio, overall transform, card-exit overlap and last-frame guards; corrected all. Browser verified both MP4s loaded readyState4/duration6; editor selected return template, prohibited sound-cut controls, shifted presenter -60 and verified frame88 ends at0,0/1440x1080. Unsaved test discarded; existing project data preserved.
+- Geometry6 assertions and Python14 regressions passed; TypeScript frontend/Remotion and production build passed. Both final demos fully decoded.
+- Synthetic source video with440Hz original audio staged through CLI and rendered .tmp/presenter-real-test.mp4:180 frames/6s, full decode passed, decoded audio correlation1.0 with source0.5..6.5s, minimum20ms RMS1970.2 (no >=20ms silent blocks). This is a test source, not user footage.

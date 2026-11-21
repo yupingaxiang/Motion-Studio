@@ -3,14 +3,64 @@
   "approvals": [
     {
       "sceneId": "S01",
-      "selectedTemplateId": "",
-      "selectedTemplateVersion": "",
-      "approvalStatus": "PENDING",
+      "selectedTemplateId": "TEXT-001",
+      "selectedTemplateVersion": "1.0.0",
+      "approvalStatus": "SELECTED",
       "modificationNotes": "",
       "approvedAt": "",
       "basedOnRecommendationRevision": 1,
       "locked": false
+    },
+    {
+      "sceneId": "S02",
+      "selectedTemplateId": "COMP-001",
+      "selectedTemplateVersion": "1.0.0",
+      "approvalStatus": "SELECTED",
+      "modificationNotes": "",
+      "approvedAt": "",
+      "basedOnRecommendationRevision": 1,
+      "locked": false
+    },
+    {
+      "sceneId": "S03",
+      "selectedTemplateId": "DATA-001",
+      "selectedTemplateVersion": "1.0.0",
+      "approvalStatus": "SELECTED",
+      "modificationNotes": "",
+      "approvedAt": "",
+      "basedOnRecommendationRevision": 1,
+      "locked": false
+    },
+    {
+      "sceneId": "S04",
+      "selectedTemplateId": "COMP-001",
+      "selectedTemplateVersion": "1.0.0",
+      "approvalStatus": "SELECTED",
+      "modificationNotes": "",
+      "approvedAt": "",
+      "basedOnRecommendationRevision": 1,
+      "locked": false
+    },
+    {
+      "sceneId": "S05",
+      "selectedTemplateId": "DATA-001",
+      "selectedTemplateVersion": "1.0.0",
+      "approvalStatus": "SELECTED",
+      "modificationNotes": "",
+      "approvedAt": "",
+      "basedOnRecommendationRevision": 1,
+      "locked": false
+    },
+    {
+      "sceneId": "S06",
+      "selectedTemplateId": "DATA-001",
+      "selectedTemplateVersion": "1.0.0",
+      "approvalStatus": "APPROVED",
+      "modificationNotes": "",
+      "approvedAt": "2026-11-21T15:02:24.251072+00:00",
+      "basedOnRecommendationRevision": 1,
+      "locked": true
     }
   ],
-  "updatedAt": "2026-11-21T02:37:48.182636+00:00"
+  "updatedAt": "2026-11-21T15:02:24.251086+00:00"
 }

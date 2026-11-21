@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-21T04:02:14.717215+00:00",
+  "generatedAt": "2026-11-21T15:18:01.406977+00:00",
   "templates": [
     {
       "templateId": "COMP-001",
@@ -276,6 +276,64 @@
       ],
       "durationFrames": 150,
       "requiredAssets": []
+    },
+    {
+      "templateId": "PRESENTER-IN",
+      "name": "真人 → 右下角 · 进入讲解",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "PRESENTER",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "真人口播",
+        "知识讲解",
+        "画中画",
+        "连续转场"
+      ],
+      "tags": [
+        "真人口播",
+        "画中画",
+        "右下角",
+        "进入讲解"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 180,
+      "requiredAssets": [
+        "video"
+      ]
+    },
+    {
+      "templateId": "PRESENTER-OUT",
+      "name": "右下角 → 真人 · 回到讲述",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "PRESENTER",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "真人口播",
+        "知识讲解",
+        "画中画",
+        "连续转场"
+      ],
+      "tags": [
+        "真人口播",
+        "画中画",
+        "右下角",
+        "回到真人"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 180,
+      "requiredAssets": [
+        "video"
+      ]
     },
     {
       "templateId": "STICKER-001",

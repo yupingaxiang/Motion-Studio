@@ -1,4 +1,4 @@
-# Author: Codex | Modified: 2026-11-21 16:00:00 +08:00 | Project media binding.
+# Author: Codex | Modified: 2026-11-21 23:55:00 +08:00 | Project media binding.
 """项目管理服务：storyboard / recommendations / approvals 的读写，
 含版本号、原子写入与冲突校验，防止 Codex 与 Web 同时写损坏数据。
 
@@ -577,6 +577,19 @@ def _save_scene_edit_locked(project_id: str, scene_id: str, edit: dict, expected
         elif parameter.type=="boolean":
             if not isinstance(value,bool):raise ValueError(f"{parameter.label} 必须为开关值")
         elif not isinstance(value,str) or len(value)>5000:raise ValueError(f"{parameter.label} 必须为文本")
+    if item.templateId.startswith("PRESENTER-"):
+        if item.startMs!=0 or item.endMs!=scene.endMs-scene.startMs or item.layout.x!=0 or item.layout.y!=0 or item.layout.scale!=1:
+            raise ValueError("真人转场必须连续覆盖整段；请使用人物小窗参数调整位置和大小")
+        if item.templateId=="PRESENTER-OUT" and item.props.get("transitionAt",60)<24:
+            raise ValueError("回到真人需先预留24帧收起卡片")
+        raw=item.props.get("presenterSrc","")
+        if raw:
+            allowed_root=lib.library_root().parent.resolve()
+            path=(allowed_root/raw).resolve()
+            if not raw.startswith((f"projects/{project_id}/assets/","library/assets/")) or not path.is_relative_to(allowed_root) or not path.is_file() or path.suffix.lower() not in (".mp4",".mov",".webm",".mkv"):
+                raise ValueError("请选择当前项目或公共素材库的真实口播视频")
+        if item.props.get("transitionAt",30 if item.templateId=="PRESENTER-IN" else 60)+item.props.get("transitionFrames",26)>(item.endMs-item.startMs)*.03-1:
+            raise ValueError("真人转场超出当前动效区间，请调整转场开始帧")
     saved.scenes[scene_id]=item
     saved.revision+=1
     saved.updatedAt=now_iso()

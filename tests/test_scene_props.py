@@ -1,4 +1,4 @@
-"""Author: Codex | Modified: 2026-11-21 23:30:00 +08:00 | Verify selected candidate parameters reach rendering."""
+"""Author: Codex | Modified: 2026-11-21 23:55:00 +08:00 | Verify selected candidate parameters reach rendering."""
 import importlib.util
 from pathlib import Path
 import unittest
@@ -17,6 +17,11 @@ class ScenePropsTest(unittest.TestCase):
                 result=cli._build_scene_props(scene,SimpleNamespace(templateId=template,params=[]))
             self.assertEqual(result["_editor"]["endMs"],4200)
             self.assertEqual(result["backgroundImage"],"scene-assets/test.png")
+
+    def test_presenter_requires_real_source_in_project_renders(self):
+        """Stand-ins are library demos only; project renders need a real source video."""
+        scene=SimpleNamespace(narration="x",visualIntent="x",styleId="x",startMs=0,endMs=6000)
+        with self.assertRaises(ValueError):cli._build_scene_props(scene,SimpleNamespace(templateId="PRESENTER-OUT",params=[]))
 
     def test_selected_props_override_demo_defaults(self):
         """Use real candidate content while retaining the scene style."""

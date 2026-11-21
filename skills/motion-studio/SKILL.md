@@ -135,3 +135,12 @@ STICKER-001为原生4:3贴纸讲解模板，最多5节点；title/labels/srcs/no
 
 ### 单元素位置覆盖
 scene-edits.scenes.<sceneId>.elements 以模板稳定元素ID为键，例如 card-0、card-1、title、keyword；每项为{x,y}，表示1440×1080画布坐标下相对于原动画位置的偏移。拖动或修改一个元素不得改动其他元素和整体layout。CLI已将elements交给SCENE-EDIT；AI必须保留这些手调结果。Fred适配器内部960画布的1.5倍换算由渲染组件处理，AI不要重复换算。首页项目卡提供独立分镜编辑入口。
+
+
+### 绑定背景（修复）
+分镜assets中role=background的本地图片是真正的场景背景，铺在模板前景下方，不是低透明度纹理。CLI的_build_scene_props会为所有绑定背景的模板启用SCENE-EDIT，即便没有手调scene-edits；实际素材由_scene_media_props按内容哈希复制至public/scene-assets。模板卡片保留自身底板，全屏前景媒体会覆盖背景。背景绑定更新storyboard版本后，重新核对候选版本及渲染缓存，不能继续展示旧版本MP4冒充新背景。
+
+
+### 真人进入/返回模板
+PRESENTER-IN和PRESENTER-OUT为4:3组合场景：全屏→右下角知识讲解，或知识卡片收起→人物回全屏。默认预览6秒，DEMO DATA自绘人物仅用于模板展示，正式渲染须传presenterSrc真实本地视频。可用projects/<项目>/assets/<文件>、library/assets/<文件>或已暂存的public相对路径；CLI按哈希暂存，检查剩余时长并保留原音轨内容。sourceStartFrame以30fps帧数填写；相邻场景按源片与成片映射连续递增，避免重放/跳音。
+transitionAt/transitionFrames控制转场，不等于剪掉前后口播；OUT需先预留24帧收卡。必须在最后一帧前完成转场。真人场景_editor.startMs=0/endMs=整段时长，layout为x0/y0/scale1；人物小窗用pipX/Y/Width/Height、cropX/Y或elements.presenter偏移调整，不改变全屏终点。其他cards与title可单独拖动。当前卡片内容为标题与最多三条知识点，未自动嵌套任意Fred模板。

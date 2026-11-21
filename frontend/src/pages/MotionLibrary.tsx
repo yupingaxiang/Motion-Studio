@@ -1,9 +1,9 @@
-/** Author: Codex | Modified: 2026-11-21 15:00:00 +08:00 | Motion Studio workspace refresh. */
+/** Author: Codex | Modified: 2026-11-21 23:55:00 +08:00 | Motion Studio workspace refresh. */
 import { useEffect, useMemo, useState } from "react";
 import { api, mediaUrl } from "../api";
 import type { TemplateMeta } from "../types";
 import { VideoPlayer } from "../components/VideoPlayer";
-const labels:Record<string,string>={TEXT:"文字表达",FLOW:"流程关系",COMP:"概念对比",DATA:"数据可视化"};
+const labels:Record<string,string>={PRESENTER:"真人讲解",TEXT:"文字表达",FLOW:"流程关系",COMP:"概念对比",DATA:"数据可视化"};
 const featured=["TEXT-001","FLOW-001","COMP-001","DATA-001"];
 /** Browse real previews, filter the catalog and inspect executable template parameters. */
 export function MotionLibrary(){const [templates,setTemplates]=useState<TemplateMeta[]>([]);const [query,setQuery]=useState("");const [category,setCategory]=useState("");const [source,setSource]=useState("");const [aspect,setAspect]=useState("");const [duration,setDuration]=useState("");const [selected,setSelected]=useState<TemplateMeta|null>(null);const [error,setError]=useState("");const [loading,setLoading]=useState(true);

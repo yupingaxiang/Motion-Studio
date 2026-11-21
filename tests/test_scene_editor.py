@@ -26,6 +26,16 @@ class EditorTest(unittest.TestCase):
             for offsets in ({"bad]id":{"x":0,"y":0}},{"keyword":{"x":float("nan"),"y":0}},{"keyword":{"x":9999,"y":0}}):
                 with self.assertRaises(ValueError):proj.save_scene_edit("p","S1",{**base,"elements":offsets},1)
 
+    def test_presenter_cannot_cut_audio_or_break_full_frame_endpoints(self):
+        """Presenter instances must cover the full scene and reach their endpoint within rendered frames."""
+        with tempfile.TemporaryDirectory() as temp,patch.object(proj,"projects_root",return_value=Path(temp)):
+            proj.write_storyboard(Storyboard(projectId="p",scenes=[Scene(sceneId="S1",narration="x",startMs=0,endMs=3000,visualIntent="x")]))
+            base={"templateId":"PRESENTER-OUT","templateVersion":"1.0.0","props":{},"endMs":3000}
+            for change in ({"startMs":200},{"endMs":2900},{"layout":{"scale":.8}},{"props":{"transitionAt":64,"transitionFrames":26}},{"props":{"transitionAt":0}}):
+                with self.assertRaises(ValueError):proj.save_scene_edit("p","S1",{**base,**change},0)
+            saved=proj.save_scene_edit("p","S1",{**base,"elements":{"presenter":{"x":-50,"y":-20}}},0)
+            self.assertEqual(saved["scenes"]["S1"]["elements"]["presenter"]["x"],-50)
+
     def test_locked_scene_rejects_changes(self):
         """Confirmed scenes require explicit unlock before any visual edit."""
         with tempfile.TemporaryDirectory() as temp,patch.object(proj,"projects_root",return_value=Path(temp)):
