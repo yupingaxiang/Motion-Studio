@@ -208,3 +208,5 @@ motion-studio/
 新增 CLI：publish-storyboard --project P --input 实际JSON --expected-revision N（新项目 N=0）；review-brief --project P（读取分镜、审核、修改意见、冲突和成片反馈）。
 
 生成后的真实 MP4 放在 projects/P/output/，在分镜页点击“成片审看”。逐文件意见保存到 output-reviews.json，AI 下次读 review-brief 即可收到。此流程不依赖特定聊天平台 API，纯聊天平台仍需本地工具协助交接。
+# Motion-Studio
+剪辑工作台
