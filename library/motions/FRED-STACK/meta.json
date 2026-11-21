@@ -1,0 +1,66 @@
+{
+  "templateId": "FRED-STACK",
+  "name": "Fred · 图片叠放与扇开",
+  "description": "五张图片由叠放到沿弧扇开，再平铺为一行。",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "FredTemplates.tsx",
+  "compositionId": "FRED-STACK",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "sourceAvailable": true,
+  "sourceName": "FredTalk",
+  "sourceUrl": "https://github.com/njrhts2kvv-star/FredTalk/tree/main/components/projects/f14691016c16",
+  "originalId": "talk-stack-fan-out",
+  "adaptation": "原生960×540等比放大并居中于1440×1080，保留原运动；图片示例为本项目自有模板封面。",
+  "useCases": [
+    "图片展示",
+    "作品",
+    "展开"
+  ],
+  "notUseCases": [
+    "未经适配的长文本",
+    "真实软件操作录屏"
+  ],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 204,
+  "minDurationFrames": 204,
+  "maxDurationFrames": 204,
+  "requiredAssets": [],
+  "optionalAssets": [
+    "image"
+  ],
+  "params": [
+    {
+      "name": "title",
+      "type": "string",
+      "label": "标题",
+      "default": "从一叠想法，到五个方向",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "srcs",
+      "type": "array",
+      "label": "Remotion public中的图片路径",
+      "default": [
+        "fred-examples/TEXT-001.jpg",
+        "fred-examples/FLOW-001.jpg",
+        "fred-examples/COMP-001.jpg",
+        "fred-examples/DATA-001.jpg",
+        "fred-examples/TEXT-001.jpg"
+      ],
+      "required": false,
+      "description": "AI将真实素材暂存到Remotion public后填写；未填使用本项目模板封面示例。"
+    }
+  ],
+  "tags": [
+    "FredTalk",
+    "Fred",
+    "外部模板",
+    "talk-stack-fan-out"
+  ],
+  "category": "FLOW"
+}

@@ -1,0 +1,66 @@
+{
+  "templateId": "FRED-RETYPE",
+  "name": "Fred · 文字删除与重写",
+  "description": "先打出原词，退格删除后重写，保留光标与阅读停顿。",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "FredTemplates.tsx",
+  "compositionId": "FRED-RETYPE",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "sourceAvailable": true,
+  "sourceName": "FredTalk",
+  "sourceUrl": "https://github.com/njrhts2kvv-star/FredTalk/tree/main/components/projects/f14691016c16",
+  "originalId": "talk-error-retype",
+  "adaptation": "原生960×540等比放大并居中于1440×1080，保留原运动；图片示例为本项目自有模板封面。",
+  "useCases": [
+    "文字强调",
+    "重点",
+    "纠正"
+  ],
+  "notUseCases": [
+    "未经适配的长文本",
+    "真实软件操作录屏"
+  ],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 177,
+  "minDurationFrames": 177,
+  "maxDurationFrames": 177,
+  "requiredAssets": [],
+  "optionalAssets": [],
+  "params": [
+    {
+      "name": "prefix",
+      "type": "string",
+      "label": "句干",
+      "default": "好的表达，靠的是",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "first",
+      "type": "string",
+      "label": "原词",
+      "default": "堆砌信息",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "second",
+      "type": "string",
+      "label": "新词",
+      "default": "清晰重点",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "tags": [
+    "FredTalk",
+    "Fred",
+    "外部模板",
+    "talk-error-retype"
+  ],
+  "category": "TEXT"
+}

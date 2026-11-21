@@ -1,0 +1,93 @@
+{
+  "templateId": "NUMBER-001",
+  "name": "数字快进 · 落定揭示",
+  "description": "数字快速递增至目标，落定后保持数字连续并展开标题。",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "CounterFlash.tsx",
+  "compositionId": "NUMBER-001",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "sourceAvailable": true,
+  "sourceName": "Motion Studio",
+  "sourceUrl": "",
+  "originalId": "",
+  "adaptation": "参考用户视频开头的计数与快切机制重新实现；演示素材为本项目自有封面，未抽取原视频画面入库。",
+  "useCases": [
+    "数字",
+    "计数",
+    "递增",
+    "开场"
+  ],
+  "notUseCases": [
+    "精确音画同步（需另配时间戳）",
+    "未提供真实素材的视频演示"
+  ],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 150,
+  "minDurationFrames": 150,
+  "maxDurationFrames": 150,
+  "requiredAssets": [],
+  "optionalAssets": [],
+  "params": [
+    {
+      "name": "startValue",
+      "type": "number",
+      "label": "起始数字",
+      "default": 1,
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "endValue",
+      "type": "number",
+      "label": "结束数字",
+      "default": 20,
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "countFrames",
+      "type": "number",
+      "label": "递增帧数",
+      "default": 45,
+      "required": false,
+      "description": "",
+      "min": 1.0,
+      "max": 90.0
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "label": "标题",
+      "default": "种动态表达",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "subtitle",
+      "type": "string",
+      "label": "副标题",
+      "default": "从一个想法，到每一种可能。",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "accent",
+      "type": "color",
+      "label": "数字强调色",
+      "default": "#bfa2ff",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "tags": [
+    "数字",
+    "计数",
+    "递增",
+    "开场"
+  ],
+  "category": "DATA"
+}

@@ -1,0 +1,66 @@
+{
+  "templateId": "FRED-FOCUS",
+  "name": "Fred · 双图焦点接力",
+  "description": "两张图片交替对焦，当前清晰卡片同步置顶，失焦卡片与阴影退后，避免遮挡文字。",
+  "version": "1.0.1",
+  "status": "APPROVED",
+  "component": "FredTemplates.tsx",
+  "compositionId": "FRED-FOCUS",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "sourceAvailable": true,
+  "sourceName": "FredTalk",
+  "sourceUrl": "https://github.com/njrhts2kvv-star/FredTalk/tree/main/components/projects/f14691016c16",
+  "originalId": "talk-rack-focus-pair",
+  "adaptation": "原生960×540等比放大并居中于1440×1080，保留原运动；图片示例为本项目自有模板封面。",
+  "useCases": [
+    "双图",
+    "比较",
+    "聚焦"
+  ],
+  "notUseCases": [
+    "未经适配的长文本",
+    "真实软件操作录屏"
+  ],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 216,
+  "minDurationFrames": 216,
+  "maxDurationFrames": 216,
+  "requiredAssets": [],
+  "optionalAssets": [
+    "image"
+  ],
+  "params": [
+    {
+      "name": "srcs",
+      "type": "array",
+      "label": "Remotion public中的图片路径",
+      "default": [
+        "fred-examples/TEXT-001.jpg",
+        "fred-examples/FLOW-001.jpg"
+      ],
+      "required": false,
+      "description": "AI将真实素材暂存到Remotion public后填写；未填使用本项目模板封面示例。"
+    },
+    {
+      "name": "labels",
+      "type": "array",
+      "label": "两张图片的标签",
+      "default": [
+        "先看文字",
+        "再看关系"
+      ],
+      "required": false,
+      "description": ""
+    }
+  ],
+  "tags": [
+    "FredTalk",
+    "Fred",
+    "外部模板",
+    "talk-rack-focus-pair"
+  ],
+  "category": "COMP"
+}

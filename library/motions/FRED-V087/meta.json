@@ -1,0 +1,74 @@
+{
+  "templateId": "FRED-V087",
+  "name": "Fred · 荧光笔重点揭示",
+  "description": "原句高亮扫过，其他文字同时退后，重点轻微抬起。",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "FredTemplates.tsx",
+  "compositionId": "FRED-V087",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "sourceAvailable": true,
+  "sourceName": "FredTalk",
+  "sourceUrl": "https://github.com/njrhts2kvv-star/FredTalk/tree/main/components/projects/f14691016c16",
+  "originalId": "V087",
+  "adaptation": "原生960×540等比放大并居中于1440×1080，保留原运动；图片示例为本项目自有模板封面。",
+  "useCases": [
+    "文字强调",
+    "重点",
+    "纠正"
+  ],
+  "notUseCases": [
+    "未经适配的长文本",
+    "真实软件操作录屏"
+  ],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 90,
+  "minDurationFrames": 90,
+  "maxDurationFrames": 90,
+  "requiredAssets": [],
+  "optionalAssets": [],
+  "params": [
+    {
+      "name": "heading",
+      "type": "string",
+      "label": "文档标题",
+      "default": "重点阅读",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "highlight",
+      "type": "string",
+      "label": "重点句",
+      "default": "把注意力，留给真正重要的信息",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "before",
+      "type": "string",
+      "label": "上文",
+      "default": "先建立语境，再突出关键内容。",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "after",
+      "type": "string",
+      "label": "下文",
+      "default": "用动态高亮引导阅读顺序。",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "tags": [
+    "FredTalk",
+    "Fred",
+    "外部模板",
+    "V087"
+  ],
+  "category": "TEXT"
+}

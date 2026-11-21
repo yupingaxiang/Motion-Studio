@@ -1,0 +1,136 @@
+{
+  "templateId": "INTRO-001",
+  "name": "数字 × 素材快切",
+  "description": "前景数字与背景素材共用帧时钟，数字落定后展开标题；两个模块独立可复用。",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "CounterFlash.tsx",
+  "compositionId": "INTRO-001",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "sourceAvailable": true,
+  "sourceName": "Motion Studio",
+  "sourceUrl": "",
+  "originalId": "",
+  "adaptation": "参考用户视频开头的计数与快切机制重新实现；演示素材为本项目自有封面，未抽取原视频画面入库。",
+  "useCases": [
+    "开场",
+    "快切",
+    "数字",
+    "组合"
+  ],
+  "notUseCases": [
+    "精确音画同步（需另配时间戳）",
+    "未提供真实素材的视频演示"
+  ],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 150,
+  "minDurationFrames": 150,
+  "maxDurationFrames": 150,
+  "requiredAssets": [],
+  "optionalAssets": [],
+  "params": [
+    {
+      "name": "startValue",
+      "type": "number",
+      "label": "起始数字",
+      "default": 1,
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "endValue",
+      "type": "number",
+      "label": "结束数字",
+      "default": 20,
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "countFrames",
+      "type": "number",
+      "label": "递增帧数",
+      "default": 45,
+      "required": false,
+      "description": "",
+      "min": 1.0,
+      "max": 90.0
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "label": "标题",
+      "default": "种动态表达",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "subtitle",
+      "type": "string",
+      "label": "副标题",
+      "default": "从一个想法，到每一种可能。",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "accent",
+      "type": "color",
+      "label": "数字强调色",
+      "default": "#bfa2ff",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "srcs",
+      "type": "array",
+      "label": "素材路径列表",
+      "default": [
+        "flash-examples/TEXT-001.mp4",
+        "flash-examples/FLOW-001.mp4",
+        "fred-examples/COMP-001.jpg",
+        "fred-examples/DATA-001.jpg"
+      ],
+      "required": false,
+      "description": "Remotion public内相对路径，可为图片或MP4/WebM视频；AI复制真实素材后填写。"
+    },
+    {
+      "name": "cutFrames",
+      "type": "number",
+      "label": "每次快切帧数",
+      "default": 6,
+      "required": false,
+      "description": "",
+      "min": 1.0,
+      "max": 30.0
+    },
+    {
+      "name": "dim",
+      "type": "number",
+      "label": "压暗强度",
+      "default": 0.73,
+      "required": false,
+      "description": "",
+      "min": 0.0,
+      "max": 0.95
+    },
+    {
+      "name": "videoStartFrames",
+      "type": "number",
+      "label": "视频起始取材帧",
+      "default": 30,
+      "required": false,
+      "description": "",
+      "min": 0.0,
+      "max": 300.0
+    }
+  ],
+  "tags": [
+    "开场",
+    "快切",
+    "数字",
+    "组合"
+  ],
+  "category": "TEXT"
+}

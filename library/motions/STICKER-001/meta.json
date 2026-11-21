@@ -1,0 +1,110 @@
+{
+  "templateId": "STICKER-001",
+  "name": "贴纸风科普 · 分步讲解",
+  "description": "薄荷绿纸纹、白边剪纸素材和手绘连线，按独立口播时间点逐项展开，配便签与结论标签。",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "StickerExplainer.tsx",
+  "compositionId": "STICKER-001",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "sourceAvailable": true,
+  "sourceName": "Motion Studio",
+  "sourceUrl": "",
+  "originalId": "",
+  "adaptation": "参考用户视频第07项贴纸风科普的设计机制，自绘SVG示例，无原作者Logo或人物。右下角留出人物小窗区域；不自动合成人物。",
+  "useCases": [
+    "流程讲解",
+    "工具介绍",
+    "知识科普",
+    "分步说明"
+  ],
+  "notUseCases": [
+    "超过五个节点的长流程",
+    "未经排版的长段落"
+  ],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 270,
+  "minDurationFrames": 270,
+  "maxDurationFrames": 270,
+  "requiredAssets": [],
+  "optionalAssets": [
+    "image"
+  ],
+  "params": [
+    {
+      "name": "title",
+      "type": "string",
+      "label": "标题",
+      "default": "把一个想法，变成清楚的表达",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "labels",
+      "type": "array",
+      "label": "节点文字（最多5项）",
+      "default": [
+        "整理稿子",
+        "规划分镜",
+        "录制口播",
+        "匹配动效",
+        "完成作品"
+      ],
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "cueFrames",
+      "type": "array",
+      "label": "各节点出现帧（口播时间秒×30）",
+      "default": [
+        12,
+        48,
+        84,
+        120,
+        156
+      ],
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "srcs",
+      "type": "array",
+      "label": "可替换贴纸图片（public相对路径）",
+      "default": [],
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "notes",
+      "type": "array",
+      "label": "便签说明（最多2项）",
+      "default": [
+        "先想清楚\n要讲什么",
+        "跟着口播\n一步步展开"
+      ],
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "summary",
+      "type": "string",
+      "label": "结论短句",
+      "default": "素材、文字与动作，一起讲清楚。",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "tags": [
+    "贴纸",
+    "科普",
+    "步骤",
+    "工具箱",
+    "纸张",
+    "手绘"
+  ],
+  "category": "FLOW"
+}
