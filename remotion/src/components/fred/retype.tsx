@@ -1,4 +1,4 @@
-/** Original author: FredTalk contributors (MIT, see LICENSE). Imported by Codex: 2026-11-21 18:00:00 +08:00. Source: components/projects/f14691016c16/src/components/talk-error-retype.tsx */
+/** Original author: FredTalk contributors (MIT, see LICENSE). Imported by Codex: 2026-11-21 18:00:00 +08:00. Source: components/projects/f14691016c16/src/components/talk-error-retype.tsx; Modified by Codex: 2026-11-21 23:00:00 +08:00, marked independently editable elements. */
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { AbsoluteFill, continueRender, delayRender, useCurrentFrame } from "remotion";
 
@@ -66,6 +66,7 @@ type Props = {
   accent?: string;
 };
 
+/** Render independently positionable phrase groups with deterministic typing and deletion. */
 export default function ErrorRetype({ prefix = "口播做得好，靠的是", first = "模型大小", second = "讲述方法", accent = "#0066cc" }: Props) {
   const t = useCurrentFrame() / FPS;
   const N = Math.max(first.length, second.length);
@@ -108,8 +109,8 @@ export default function ErrorRetype({ prefix = "口播做得好，靠的是", fi
     <AbsoluteFill style={{ background: "#ffffff", color: "#1d1d1f", overflow: "hidden", fontFamily: '"Microsoft YaHei", sans-serif' }}>
       <style>{CSS}</style>
       <div className="ert-tw" style={{ left }}>
-        <span style={{ opacity: prefixK * exitK }}>{prefix}</span>
-        <span className="ert-slot" style={{ opacity: exitK }}>
+        <span data-motion-element="prefix" data-motion-label="句子前缀" style={{ display:"inline-block", opacity: prefixK * exitK }}>{prefix}</span>
+        <span data-motion-element="word" data-motion-label="重写词组" className="ert-slot" style={{ opacity: exitK }}>
           {Array.from({ length: N }, (_, k) => <span key={k}>{k < n ? word[k] : ""}</span>)}
         </span>
         {/* 光标钉在最后一字后：空槽仍占位，用 x 补偿 */}

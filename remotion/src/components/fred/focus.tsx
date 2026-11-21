@@ -1,4 +1,4 @@
-/** Original author: FredTalk contributors (MIT, see LICENSE). Modified by Codex: 2026-11-21 18:30:00 +08:00; focused card and its shadow move above the inactive card. Source: components/projects/f14691016c16/src/components/talk-rack-focus-pair.tsx */
+/** Original author: FredTalk contributors (MIT, see LICENSE). Modified by Codex: 2026-11-21 18:30:00 +08:00; focused card and its shadow move above the inactive card. Source: components/projects/f14691016c16/src/components/talk-rack-focus-pair.tsx; Modified by Codex: 2026-11-21 23:00:00 +08:00, marked independently editable elements. */
 import React from "react";
 import { AbsoluteFill, Img, useCurrentFrame } from "remotion";
 
@@ -99,11 +99,11 @@ export default function RackFocusPair({ labels = ["纸书", "电子书"], srcs }
     <AbsoluteFill style={{ background: "#ffffff", color: "#1d1d1f", overflow: "hidden", fontFamily: '"Microsoft YaHei", sans-serif' }}>
       <style>{CSS}</style>
       {/* 后张（电子书）480×320 @ (400, 60) */}
-      <div className="rfp-photo rfp-pb" style={{ zIndex: backIsFocused ? 2 : 1, opacity: inB * exitK, filter: back.filter, transform: `translateY(${lerp(14, 0, inB)}px) scale(${back.scale})`, transformOrigin: "50% 50%" }}>
+      <div data-motion-element="card-1" data-motion-label="后方卡片" className="rfp-photo rfp-pb" style={{ zIndex: backIsFocused ? 2 : 1, opacity: inB * exitK, filter: back.filter, transform: `translateY(${lerp(14, 0, inB)}px) scale(${back.scale})`, transformOrigin: "50% 50%" }}>
         <Ph tone={5} src={srcs?.[1]} /><div className="rfp-tag r">{labels[1]}</div>
       </div>
       {/* 前张（纸书）380×270 @ (100, 160)，压住后张左下一角 */}
-      <div className="rfp-photo rfp-pf" style={{ zIndex: backIsFocused ? 1 : 2, opacity: inF * exitK, filter: front.filter, transform: `translateY(${lerp(14, 0, inF)}px) scale(${front.scale})`, transformOrigin: "50% 50%" }}>
+      <div data-motion-element="card-0" data-motion-label="前方卡片" className="rfp-photo rfp-pf" style={{ zIndex: backIsFocused ? 1 : 2, opacity: inF * exitK, filter: front.filter, transform: `translateY(${lerp(14, 0, inF)}px) scale(${front.scale})`, transformOrigin: "50% 50%" }}>
         <Ph tone={4} src={srcs?.[0]} /><div className="rfp-tag">{labels[0]}</div>
       </div>
     </AbsoluteFill>

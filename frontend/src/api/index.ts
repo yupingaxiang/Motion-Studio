@@ -57,6 +57,8 @@ export const api = {
   getReviewBrief: (projectId:string) => json<any>(fetch(`/api/projects/${encodeURIComponent(projectId)}/review-brief`)),
   getOutputs: (projectId:string) => json<{outputs:{file:string;path:string;sizeBytes:number;notes:string}[]}>(fetch(`/api/projects/${encodeURIComponent(projectId)}/outputs`)),
   saveOutputReview: (projectId:string,file:string,notes:string) => json<any>(fetch(`/api/projects/${encodeURIComponent(projectId)}/output-review`,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({file,notes})})),
+  getSceneEdits: (id:string)=>json<any>(fetch(`/api/projects/${encodeURIComponent(id)}/scene-edits`)),
+  saveSceneEdit: (id:string,scene:string,edit:any,expectedRevision:number)=>json<any>(fetch(`/api/projects/${encodeURIComponent(id)}/scenes/${encodeURIComponent(scene)}/edit`,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({edit,expectedRevision})})),
   // approvals
   select: (body: {
     projectId: string;

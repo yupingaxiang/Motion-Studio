@@ -1,4 +1,4 @@
-/** Original author: FredTalk contributors (MIT, see LICENSE). Imported by Codex: 2026-11-21 18:00:00 +08:00. Source: components/projects/f14691016c16/src/components/talk-stack-fan-out.tsx */
+/** Original author: FredTalk contributors (MIT, see LICENSE). Imported by Codex: 2026-11-21 18:00:00 +08:00. Source: components/projects/f14691016c16/src/components/talk-stack-fan-out.tsx; Modified by Codex: 2026-11-21 23:00:00 +08:00, marked independently editable elements. */
 import React from "react";
 import { AbsoluteFill, Img, useCurrentFrame } from "remotion";
 
@@ -92,6 +92,7 @@ type Props = {
   srcs?: string[];
 };
 
+/** Render independently positionable image cards while retaining their original stack/fan animation. */
 export default function StackFanOut({ title = "今年拍了五张候选封面", srcs }: Props) {
   const t = useCurrentFrame() / FPS;
   const C = CONFIG, mid = (C.n - 1) / 2, pitch = C.flatW + C.flatGap;
@@ -103,7 +104,7 @@ export default function StackFanOut({ title = "今年拍了五张候选封面", 
   return (
     <AbsoluteFill style={{ background: "#ffffff", color: "#1d1d1f", overflow: "hidden", fontFamily: '"Microsoft YaHei", sans-serif' }}>
       <style>{CSS}</style>
-      {title ? <div className="sfo-ttl" style={{ opacity: ttlOp, transform: `translateY(${lerp(10, 0, ttlIn)}px)` }}>{title}</div> : null}
+      {title ? <div data-motion-element="title" data-motion-label="标题" className="sfo-ttl" style={{ opacity: ttlOp, transform: `translateY(${lerp(10, 0, ttlIn)}px)` }}>{title}</div> : null}
       {Array.from({ length: C.n }, (_, i) => {
         // 三态：叠放（微错位）→ 扇开（弧上点 + 旋转）→ 铺平（一行等距、旋转归零、缩到 flatW）；两段不重叠，顺序 lerp
         const deg = -C.fanAngle + i * ((2 * C.fanAngle) / (C.n - 1)), a = (deg * Math.PI) / 180;
@@ -114,7 +115,7 @@ export default function StackFanOut({ title = "今年拍了五张候选封面", 
         const r = lerp(lerp(s0.r, s1.r, pf), s2.r, pl), s = lerp(lerp(s0.s, s1.s, pf), s2.s, pl);
         const op = tw(t, C.lead + i * C.stackStagger, C.stackIn, power1Out) * (1 - tw(t, C.exitAt + i * C.exitStagger, C.exit, power2In));
         return (
-          <div key={i} className="sfo-card" style={{ left: C.card.x, top: C.card.y, width: C.card.w, height: C.card.h, opacity: op,
+          <div key={i} data-motion-element={`card-${i}`} data-motion-label={`图片卡片 ${i+1}`} className="sfo-card" style={{ left: C.card.x, top: C.card.y, width: C.card.w, height: C.card.h, opacity: op,
             transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${s})`, transformOrigin: "50% 50%" }}>
             <Ph tone={i + 1} src={src(i)} />
           </div>

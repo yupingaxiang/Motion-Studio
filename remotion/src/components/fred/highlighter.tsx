@@ -1,4 +1,4 @@
-/** Original author: FredTalk contributors (MIT, see LICENSE). Imported by Codex: 2026-11-21 18:00:00 +08:00. Source: components/projects/f14691016c16/src/components/talk-highlighter-sweep.tsx */
+/** Original author: FredTalk contributors (MIT, see LICENSE). Imported by Codex: 2026-11-21 18:00:00 +08:00. Source: components/projects/f14691016c16/src/components/talk-highlighter-sweep.tsx; Modified by Codex: 2026-11-21 23:00:00 +08:00, marked independently editable elements. */
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 
@@ -94,10 +94,10 @@ export default function HighlighterSweep({heading="重点阅读",highlight="把�
     }}>
       <style>{CSS}</style>
       <div className="quote-card">
-        <div className="doc-head">{heading}</div>
-        <div className="quote-line dim" style={{ opacity: dimOpacity }}>{before}</div>
+        <div data-motion-element="heading" data-motion-label="卡片标题" className="doc-head">{heading}</div>
+        <div data-motion-element="before" data-motion-label="前文" className="quote-line dim" style={{ opacity: dimOpacity }}>{before}</div>
         <div className="quote-line dim" style={{ opacity: dimOpacity }}>接下来，请看这句话：</div>
-        <div className="quote-line key" style={{
+        <div data-motion-element="highlight" data-motion-label="高亮句" className="quote-line key" style={{
           transform: `translateY(${keyY}px) scale(${keyScale})`,
           transformOrigin: "left center",
         }}>
@@ -106,7 +106,7 @@ export default function HighlighterSweep({heading="重点阅读",highlight="把�
             {highlight}
           </span>。
         </div>
-        <div className="quote-line dim" style={{ opacity: dimOpacity }}>{after}</div>
+        <div data-motion-element="after" data-motion-label="后文" className="quote-line dim" style={{ opacity: dimOpacity }}>{after}</div>
         <div className="quote-line dim" style={{ opacity: dimOpacity }}>阅读之后，再继续下一段。</div>
       </div>
     </AbsoluteFill>

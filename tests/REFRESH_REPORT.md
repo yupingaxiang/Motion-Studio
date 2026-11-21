@@ -41,3 +41,20 @@
 - Configurable 2-5 node labels/images and cueFrames support per-node narration timing; no presenter footage fabricated. Lower-right reserved.
 - TypeScript PASS; real render/full FFmpeg decode PASS, H.264 1440x1080 30fps,9s. Inspected2.8s and7.5s states; reduced summary font to remove orphan character and rerendered.
 - Promoted to APPROVED after validation and rebuilt catalog.
+
+
+## 2026-11-21 Scene editor verification
+- Added scene content, whole-card placement/scale, local timing and explicit versioned saves; AI review-brief and rendering consume scene-edits.json. Confirmed scenes remain locked.
+- Shared Remotion Player/export component; six templates support transparent foreground preview. No transparent video export or arbitrary internal-element timeline implemented.
+- 14 Python regression tests passed (scene editor 4, handoff 3, scene props 1, Fred 2, project assets 4); counter timing 10 assertions passed. Frontend and Remotion TypeScript checks and production build passed.
+- Real SCENE-EDIT render: .tmp/editor-render.mp4, 105 frames/3.5 seconds; transparent PNG .tmp/editor-alpha.png has alpha range 0..255.
+- Browser verified immediate text/layout changes, checkerboard transparency, save/reload retention and discard restoring saved values. Demo S01 contains an explicit saved editor draft; original approvals/recommendations retained.
+- Bound background images are also passed into the shared live preview; presenter video is preview-only and starts at the selected file beginning.
+
+
+## 2026-11-21 Independent element editing correction
+- Replaced implicit whole-composition dragging with template-declared element hit-testing, independent offsets and preview-only selection outline. Blank canvas deselects without moving the composition. All 12 adapters mark semantic elements; Fred coordinates compensate its 1.5 stage scale.
+- Homepage project cards now expose separate editor/review links.
+- Browser: at frame90, dragging COMP left card produced x104/y-74; right card and title bounding rects stayed identical. Saved and reloaded, selected left card and verified x104/y-74 persisted; restored test offsets to zero and saved. Homepage editor link opened editor route successfully. Demo S04 now contains a neutral saved editor draft.
+- Real rendered still .tmp/element-edit.png shows left card independently shifted +100/-90 while right card stays in place.
+- 11 Python tests passed including new element validation/persistence and CLI handoff; frontend and Remotion typechecks/build passed.

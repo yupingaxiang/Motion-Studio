@@ -1,4 +1,4 @@
-# Author: Codex | Modified: 2026-11-21 15:00:00 +08:00 | Bind approved candidate props to rendering.
+# Author: Codex | Modified: 2026-11-21 23:00:00 +08:00 | Bind approved candidate props to rendering.
 """Motion Studio 本地 CLI。
 
 Codex Desktop 通过本 Skill 调用此 CLI 完成本地数据操作、检索、验证与渲染调用。
@@ -516,6 +516,11 @@ def cmd_render_scene_preview(args: argparse.Namespace) -> int:
         "durationFrames": meta.durationFrames,
         **props,
     }
+    composition_id = meta.compositionId
+    if props.get("_editor"):
+        editor = props["_editor"]
+        props_data = {"templateId":meta.templateId,"content":{k:v for k,v in props.items() if k!="_editor"},"sceneDurationMs":scene.endMs-scene.startMs,**editor}
+        composition_id = "SCENE-EDIT"
     props_file.parent.mkdir(parents=True, exist_ok=True)
     props_file.write_text(json.dumps(props_data, ensure_ascii=False, indent=2), encoding="utf-8")
 
@@ -523,7 +528,7 @@ def cmd_render_scene_preview(args: argparse.Namespace) -> int:
         node,
         os.path.join("node_modules", "@remotion", "cli", "remotion-cli.js"),
         "render",
-        meta.compositionId,
+        composition_id,
         str(out_mp4),
         "--codec=h264",
         "--props",
@@ -540,7 +545,7 @@ def cmd_render_scene_preview(args: argparse.Namespace) -> int:
         node,
         os.path.join("node_modules", "@remotion", "cli", "remotion-cli.js"),
         "still",
-        meta.compositionId,
+        composition_id,
         str(poster),
         "--frame=15",
         "--props",
@@ -608,7 +613,14 @@ def _selected_candidate_props(project_id, scene_id, approval) -> dict:
             for candidate in scene_rec.candidates:
                 if (candidate.templateId == approval.selectedTemplateId
                         and candidate.templateVersion == approval.selectedTemplateVersion):
-                    return candidate.proposedProps
+                    result = dict(candidate.proposedProps)
+                    saved = proj.read_scene_edits(project_id)["scenes"].get(scene_id)
+                    if saved:
+                        if saved["templateId"] != approval.selectedTemplateId or saved["templateVersion"] != approval.selectedTemplateVersion:
+                            raise ValueError("Manual edit template/version differs from selected candidate; update recommendations and review explicitly")
+                        result.update(saved["props"])
+                        result["_editor"] = {k:saved[k] for k in ("startMs","endMs","layout","elements") if k in saved}
+                    return result
     return {}
 
 
@@ -701,12 +713,16 @@ def cmd_produce(args: argparse.Namespace) -> int:
         }
         clip_mp4 = proj.previews_dir(args.project) / f"{scene.sceneId}_final.mp4"
         props_file = proj.previews_dir(args.project) / f"{scene.sceneId}_final.props.json"
+        composition_id = meta.compositionId
+        if props.get("_editor"):
+            props_data = {"templateId":meta.templateId,"content":{k:v for k,v in props.items() if k!="_editor"},"sceneDurationMs":scene.endMs-scene.startMs,**props["_editor"]}
+            composition_id = "SCENE-EDIT"
         props_file.write_text(json.dumps(props_data, ensure_ascii=False, indent=2), encoding="utf-8")
         cmd = [
             node,
             os.path.join("node_modules", "@remotion", "cli", "remotion-cli.js"),
             "render",
-            meta.compositionId,
+            composition_id,
             str(clip_mp4),
             "--codec=h264",
             "--props",

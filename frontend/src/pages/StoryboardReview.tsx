@@ -147,6 +147,7 @@ export function StoryboardReview() {
         <div className="flex items-center gap-4">
           <Link to="/projects" className="text-ms-muted hover:text-white text-sm">← 返回</Link>
           <h1 className="text-lg font-semibold">{projectId}</h1>
+          <Link className="text-xs text-ms-accent" to={`/editor/${projectId}`}>分镜编辑 ↗</Link>
           <Link className="text-xs text-ms-accent" to={`/outputs/${projectId}`}>成片审看 ↗</Link>
           <span className="text-xs text-ms-muted">SB rev {storyboard.projectRevision}</span>
           {recs && <span className="text-xs text-ms-muted">REC rev {recs.recommendationRevision}</span>}

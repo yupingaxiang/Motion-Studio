@@ -7,29 +7,29 @@
       "file": "highlighter.tsx",
       "upstreamFile": "talk-highlighter-sweep.tsx",
       "upstreamSha256": "6101684754d6b01c2e089f29249601bff6cf47cbea40dba135dbf98ba8a17580",
-      "localSha256": "870a6838c31ccf04ecdaed1cd6345f3b7b965e36a264725ca339de56d7546a5f",
-      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained"
+      "localSha256": "ee05651b32bd9b3064420d686755d897bb941f88e568a2ff08142cce65ea4a9e",
+      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; stable semantic element IDs for independent editor positioning (motion math retained)"
     },
     {
       "file": "stack.tsx",
       "upstreamFile": "talk-stack-fan-out.tsx",
       "upstreamSha256": "f28246b30505e7fc69dcb42f58f5ce9e5c21f16ae0059bbded4816336e15b6b1",
-      "localSha256": "be2baf6f18338d23db2b56581705d1211cf9db05b3e86ceee4b984f2e9a5f65f",
-      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained"
+      "localSha256": "653fa6bc1e7935353210f30458d4e5f139eb6e7af91a4a6c609ddcc6d33e22ae",
+      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; stable semantic element IDs for independent editor positioning (motion math retained)"
     },
     {
       "file": "retype.tsx",
       "upstreamFile": "talk-error-retype.tsx",
       "upstreamSha256": "b00625240a6b2b3b08eb4e637ee521cb91d161fe394e39a84a4f84248f51b732",
-      "localSha256": "17ef94c87d681f6ec401788e683b0088493c6c585c41e02e004c7b85a55651af",
-      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained"
+      "localSha256": "4b8129b9562205b2c73a02cd8f8a0bd82faa4fbe6bf4fbe7dec65a027414559d",
+      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; stable semantic element IDs for independent editor positioning (motion math retained)"
     },
     {
       "file": "focus.tsx",
       "upstreamFile": "talk-rack-focus-pair.tsx",
       "upstreamSha256": "ec1abd22525f165a3d4c55b34872fae1efd408f32cbe26e4ee236cffa0640c4d",
-      "localSha256": "29ce4d27c9f6c8ab7354b4adce718b8b6785180e7ab84a3ff3f3943ec44462bc",
-      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; Focus crossover drives both card z-indices so inactive shadows cannot occlude active text"
+      "localSha256": "2f66e97f4d08b1aa432980cc6548199856eaef5344f08f0cd722b89011e17bed",
+      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; Focus crossover drives both card z-indices so inactive shadows cannot occlude active text; stable semantic element IDs for independent editor positioning (motion math retained)"
     }
   ],
   "upstreamTreeSha": "59b9e9957957dc9f3fd94ab78f95cec33c29e915"

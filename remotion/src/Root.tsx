@@ -28,7 +28,7 @@ const FPS = 30;
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      <Composition id="SCENE-EDIT" component={EditableScene} durationInFrames={150} fps={30} width={1440} height={1080} defaultProps={{templateId:"TEXT-001",content:{keyword:"实时编辑"},layout:{x:0,y:0,scale:1,transparent:false},startMs:0,endMs:5000}} calculateMetadata={({props})=>({durationInFrames:Math.max(1,Math.ceil(props.endMs*.03))})}/>
+      <Composition id="SCENE-EDIT" component={EditableScene} durationInFrames={150} fps={30} width={1440} height={1080} defaultProps={{templateId:"TEXT-001",content:{keyword:"实时编辑"},layout:{x:0,y:0,scale:1,transparent:false},startMs:0,endMs:5000}} calculateMetadata={({props})=>({durationInFrames:Math.max(1,Math.ceil((props.sceneDurationMs??props.endMs)*.03))})}/>
       <Composition id="STICKER-001" component={StickerExplainer} durationInFrames={270} fps={30} width={1440} height={1080}/>
       <Composition id="NUMBER-001" component={NumberCounter} durationInFrames={150} fps={30} width={1440} height={1080}/>
       <Composition id="MEDIA-001" component={MediaFlash} durationInFrames={150} fps={30} width={1440} height={1080}/>

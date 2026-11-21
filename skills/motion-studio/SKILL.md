@@ -122,3 +122,16 @@ srcs必须指向Remotion public内真实本地图片或视频。AI复制项目�
 ## 贴纸风科普
 
 STICKER-001为原生4:3贴纸讲解模板，最多5节点；title/labels/srcs/notes/summary均可替换。cueFrames为各节点实际出现帧，AI按本段口播文本时间戳（秒×30）填写，不必沿用默认等间隔。手绘连线跟随下一节点，便签跟随末节点。右下角保留人物小窗空间，当前模板本身不含真人视频。默认图标为本项目自绘SVG，不是参考作者的Logo或肖像。建议节点短词、标题短句；长内容重排并出真实预览检查。
+
+
+## 分镜编辑手动覆盖（2026-11-21）
+
+工作台“分镜编辑”通过真实Remotion Player编辑整张动效的声明参数、x/y/scale、局部startMs/endMs及有限模板的背景透明开关。修改保存在scene-edits.json（revision、scenes按分镜ID、updatedAt），与recommendations和approvals分离。review-brief的sceneEdits包含用户手调结果，AI不得覆盖或忽略；重新发布候选时保留手动内容与时间。
+
+编辑选择的templateId/templateVersion若不同于审核候选，先更新候选并让用户审核，不能静默套用。已确认分镜写入被拒绝，需用户显式撤销确认。CLI在所选ID/版本匹配时合并手动props，并通过共享SCENE-EDIT组件应用时间/位置/缩放；不匹配则报错。
+
+首版是一张动效卡/分镜，不是任意内部元素编辑器。支持透明前景预览的模板为TEXT/FLOW/COMP/DATA/NUMBER/STICKER；媒体全底图和Fred模板不宣称已透明化。项目口播视频可作预览参照或右下角小窗，不包含在该动效导出中。尚无透明MOV/WebM视频导出，不将H.264MP4当作带alpha的视频。
+
+
+### 单元素位置覆盖
+scene-edits.scenes.<sceneId>.elements 以模板稳定元素ID为键，例如 card-0、card-1、title、keyword；每项为{x,y}，表示1440×1080画布坐标下相对于原动画位置的偏移。拖动或修改一个元素不得改动其他元素和整体layout。CLI已将elements交给SCENE-EDIT；AI必须保留这些手调结果。Fred适配器内部960画布的1.5倍换算由渲染组件处理，AI不要重复换算。首页项目卡提供独立分镜编辑入口。

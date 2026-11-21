@@ -1,0 +1,47 @@
+{
+  "revision": 3,
+  "scenes": {
+    "S01": {
+      "templateId": "TEXT-001",
+      "templateVersion": "1.1.0",
+      "props": {
+        "keyword": "复利",
+        "subtitle": "大家好，今天介绍一个概念：复利。"
+      },
+      "elements": {},
+      "startMs": 0,
+      "endMs": 3000,
+      "layout": {
+        "x": 80.0,
+        "y": 0.0,
+        "scale": 0.85,
+        "transparent": true
+      }
+    },
+    "S04": {
+      "templateId": "COMP-001",
+      "templateVersion": "1.1.0",
+      "props": {
+        "leftLabel": "单利",
+        "rightLabel": "复利",
+        "leftValue": "线性增长",
+        "rightValue": "指数增长"
+      },
+      "elements": {
+        "card-0": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      "startMs": 0,
+      "endMs": 4500,
+      "layout": {
+        "x": 0.0,
+        "y": 0.0,
+        "scale": 1.0,
+        "transparent": false
+      }
+    }
+  },
+  "updatedAt": "2026-11-21T14:49:16.983510+00:00"
+}

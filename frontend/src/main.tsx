@@ -11,6 +11,9 @@ import { AssetLibrary } from "./pages/AssetLibrary";
 import { StyleLibrary } from "./pages/StyleLibrary";
 import { ProjectList } from "./pages/ProjectList";
 
+/** Load the editor runtime only when editing, keeping the browsing workspace lightweight. */
+const SceneEditor=React.lazy(()=>import("./pages/SceneEditor").then(m=>({default:m.SceneEditor})));
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <HashRouter>
@@ -18,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route element={<Layout />}>
           <Route path="/" element={<Navigate to="/projects" replace />} />
           <Route path="/projects" element={<ProjectList />} />
+          <Route path="/editor/:projectId" element={<React.Suspense fallback={<div className="empty-state">正在加载编辑器…</div>}><SceneEditor/></React.Suspense>}/>
           <Route path="/outputs/:projectId" element={<OutputReview />} />
           <Route path="/review/:projectId" element={<StoryboardReview />} />
           <Route path="/motions" element={<MotionLibrary />} />

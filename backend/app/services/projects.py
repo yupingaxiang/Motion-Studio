@@ -528,7 +528,17 @@ def read_scene_edits(project_id: str) -> dict[str, Any]:
     return (read_json_model(path,SceneEdits) if path.exists() else SceneEdits()).model_dump()
 
 
+import threading
+_SCENE_EDIT_LOCK = threading.RLock()
+
+
 def save_scene_edit(project_id: str, scene_id: str, edit: dict, expected_revision: int) -> dict:
+    """Serialize workbench editor writes so concurrent tabs cannot pass the same revision check."""
+    with _SCENE_EDIT_LOCK:
+        return _save_scene_edit_locked(project_id, scene_id, edit, expected_revision)
+
+
+def _save_scene_edit_locked(project_id: str, scene_id: str, edit: dict, expected_revision: int) -> dict:
     """Save validated visual overrides; reject locked scenes, stale versions and out-of-scene timing."""
     from ..models.scene_edits import SceneEdits,SceneEdit
     from . import library as lib
@@ -548,6 +558,25 @@ def save_scene_edit(project_id: str, scene_id: str, edit: dict, expected_revisio
     if set(item.props)-allowed:raise ValueError("存在模板未声明的参数")
     if item.layout.transparent and item.templateId not in {"TEXT-001","FLOW-001","COMP-001","DATA-001","NUMBER-001","STICKER-001"}:
         raise ValueError("此模板暂不支持透明前景")
+    import math
+    for parameter in meta.params:
+        if parameter.name not in item.props:
+            continue
+        value=item.props[parameter.name]
+        array=parameter.type=="array" or isinstance(parameter.default,list) or parameter.name in ("nodes","steps")
+        if array:
+            if not isinstance(value,list) or len(value)>100:raise ValueError(f"{parameter.label} 必须是列表，最多100项")
+            if parameter.name=="cueFrames":
+                if any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) or v<0 for v in value):raise ValueError("节点时间必须是非负数")
+            elif any(not isinstance(v,str) or len(v)>5000 for v in value):raise ValueError(f"{parameter.label} 必须使用文本条目")
+            if parameter.name=="srcs" and any(v.startswith(("http:","https:","/","\\")) or ".." in v.split("/") for v in value):raise ValueError("素材必须使用本地 public 相对路径")
+        elif parameter.type=="number":
+            if isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value):raise ValueError(f"{parameter.label} 必须是数字")
+            if parameter.min is not None and value<parameter.min:raise ValueError(f"{parameter.label} 小于允许范围")
+            if parameter.max is not None and value>parameter.max:raise ValueError(f"{parameter.label} 超出允许范围")
+        elif parameter.type=="boolean":
+            if not isinstance(value,bool):raise ValueError(f"{parameter.label} 必须为开关值")
+        elif not isinstance(value,str) or len(value)>5000:raise ValueError(f"{parameter.label} 必须为文本")
     saved.scenes[scene_id]=item
     saved.revision+=1
     saved.updatedAt=now_iso()
