@@ -1,0 +1,22 @@
+{
+  "assets": [
+    {
+      "assetId": "b529a5ba5ce1",
+      "name": "poster.jpg",
+      "mediaType": "image",
+      "localPath": "42dee839_poster.jpg",
+      "previewPath": "42dee839_poster.jpg",
+      "tags": [
+        "background"
+      ],
+      "source": "local",
+      "license": "",
+      "fileSizeBytes": 35515,
+      "width": 0,
+      "height": 0,
+      "durationMs": 0,
+      "usageCount": 0,
+      "createdAt": "2026-11-21T14:57:49.492420+00:00"
+    }
+  ]
+}

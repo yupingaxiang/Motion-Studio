@@ -106,7 +106,7 @@ export default function ErrorRetype({ prefix = "口播做得好，靠的是", fi
   const exitK = 1 - tw(t, exitAt, CONFIG.exitDur, power2In);
 
   return (
-    <AbsoluteFill style={{ background: "#ffffff", color: "#1d1d1f", overflow: "hidden", fontFamily: '"Microsoft YaHei", sans-serif' }}>
+    <AbsoluteFill data-motion-canvas="true" style={{ background: "#ffffff", color: "#1d1d1f", overflow: "hidden", fontFamily: '"Microsoft YaHei", sans-serif' }}>
       <style>{CSS}</style>
       <div className="ert-tw" style={{ left }}>
         <span data-motion-element="prefix" data-motion-label="句子前缀" style={{ display:"inline-block", opacity: prefixK * exitK }}>{prefix}</span>

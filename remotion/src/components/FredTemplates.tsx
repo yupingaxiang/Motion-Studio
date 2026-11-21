@@ -1,4 +1,4 @@
-/** Author: Codex | Created: 2026-11-21 18:00:00 +08:00 | FredTalk MIT source adapters, native geometry preserved on a 4:3 stage. */
+/** Author: Codex | Modified: 2026-11-21 23:30:00 +08:00 | FredTalk MIT source adapters, native geometry preserved on a 4:3 stage. */
 import React from "react";
 import {AbsoluteFill,staticFile} from "remotion";
 import Highlighter from "./fred/highlighter";
@@ -6,7 +6,7 @@ import Stack from "./fred/stack";
 import Retype from "./fred/retype";
 import Focus from "./fred/focus";
 /** Preserve the original 960x540 geometry without stretching; center on native 1440x1080 canvas. */
-function Stage({children}:{children:React.ReactNode}){return <AbsoluteFill style={{background:"white"}}><div style={{position:"absolute",width:960,height:540,left:0,top:135,transform:"scale(1.5)",transformOrigin:"top left"}}>{children}</div></AbsoluteFill>}
+function Stage({children}:{children:React.ReactNode}){return <AbsoluteFill data-motion-canvas="true" style={{background:"white"}}><div style={{position:"absolute",width:960,height:540,left:0,top:135,transform:"scale(1.5)",transformOrigin:"top left"}}>{children}</div></AbsoluteFill>}
 /** Adapt real quote copy while preserving the upstream sweep/dim/lift motion. */
 export const FredHighlight:React.FC<{heading?:string;highlight?:string;before?:string;after?:string}>=props=><Stage><Highlighter {...props}/></Stage>;
 /** Resolve local public image paths; no remote media or author-private assets are used. */

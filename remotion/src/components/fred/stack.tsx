@@ -102,7 +102,7 @@ export default function StackFanOut({ title = "今年拍了五张候选封面", 
   const ttlOp = ttlIn * (1 - tw(t, C.exitAt + C.n * C.exitStagger, C.exit, power2In));
 
   return (
-    <AbsoluteFill style={{ background: "#ffffff", color: "#1d1d1f", overflow: "hidden", fontFamily: '"Microsoft YaHei", sans-serif' }}>
+    <AbsoluteFill data-motion-canvas="true" style={{ background: "#ffffff", color: "#1d1d1f", overflow: "hidden", fontFamily: '"Microsoft YaHei", sans-serif' }}>
       <style>{CSS}</style>
       {title ? <div data-motion-element="title" data-motion-label="标题" className="sfo-ttl" style={{ opacity: ttlOp, transform: `translateY(${lerp(10, 0, ttlIn)}px)` }}>{title}</div> : null}
       {Array.from({ length: C.n }, (_, i) => {

@@ -88,7 +88,7 @@ export default function HighlighterSweep({heading="重点阅读",highlight="把�
   const keyY = lerp(0, -2, liftP);
 
   return (
-    <AbsoluteFill style={{
+    <AbsoluteFill data-motion-canvas="true" style={{
       background: "#ffffff", color: "#1d1d1f", overflow: "hidden",
       fontFamily: '"Microsoft YaHei", sans-serif',
     }}>

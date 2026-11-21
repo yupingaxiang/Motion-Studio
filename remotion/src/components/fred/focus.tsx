@@ -96,7 +96,7 @@ export default function RackFocusPair({ labels = ["纸书", "电子书"], srcs }
   const exitK = 1 - tw(t, CONFIG.exitAt, CONFIG.end - CONFIG.exitAt, power2In);
 
   return (
-    <AbsoluteFill style={{ background: "#ffffff", color: "#1d1d1f", overflow: "hidden", fontFamily: '"Microsoft YaHei", sans-serif' }}>
+    <AbsoluteFill data-motion-canvas="true" style={{ background: "#ffffff", color: "#1d1d1f", overflow: "hidden", fontFamily: '"Microsoft YaHei", sans-serif' }}>
       <style>{CSS}</style>
       {/* 后张（电子书）480×320 @ (400, 60) */}
       <div data-motion-element="card-1" data-motion-label="后方卡片" className="rfp-photo rfp-pb" style={{ zIndex: backIsFocused ? 2 : 1, opacity: inB * exitK, filter: back.filter, transform: `translateY(${lerp(14, 0, inB)}px) scale(${back.scale})`, transformOrigin: "50% 50%" }}>

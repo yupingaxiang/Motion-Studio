@@ -1,4 +1,4 @@
-# Author: Codex | Modified: 2026-11-21 23:00:00 +08:00 | Bind approved candidate props to rendering.
+# Author: Codex | Modified: 2026-11-21 23:30:00 +08:00 | Bind approved candidate props to rendering.
 """Motion Studio 本地 CLI。
 
 Codex Desktop 通过本 Skill 调用此 CLI 完成本地数据操作、检索、验证与渲染调用。
@@ -625,7 +625,7 @@ def _selected_candidate_props(project_id, scene_id, approval) -> dict:
 
 
 def _build_scene_props(scene, meta, proposed_props: dict | None = None) -> dict:
-    """根据分镜内容与模板参数构建 Remotion props。"""
+    """Build candidate props and route bound backgrounds through the shared full-scene renderer."""
     props: dict = {}
     # 通用：narration 作为文本来源
     if meta.templateId.startswith("TEXT"):
@@ -664,6 +664,8 @@ def _build_scene_props(scene, meta, proposed_props: dict | None = None) -> dict:
         props.update(proposed_props)
     props["styleId"] = scene.styleId
     props.update(_scene_media_props(scene))
+    if props.get("backgroundImage") and not props.get("_editor"):
+        props["_editor"]={"startMs":0,"endMs":scene.endMs-scene.startMs,"layout":{"x":0,"y":0,"scale":1,"transparent":False}}
     return props
 
 

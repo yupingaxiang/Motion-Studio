@@ -7,29 +7,29 @@
       "file": "highlighter.tsx",
       "upstreamFile": "talk-highlighter-sweep.tsx",
       "upstreamSha256": "6101684754d6b01c2e089f29249601bff6cf47cbea40dba135dbf98ba8a17580",
-      "localSha256": "ee05651b32bd9b3064420d686755d897bb941f88e568a2ff08142cce65ea4a9e",
-      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; stable semantic element IDs for independent editor positioning (motion math retained)"
+      "localSha256": "d9a2f266417cbd7964e1c008fe900e965df6e5cbfae6f15bd8e4cc16e5eece83",
+      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; stable semantic element IDs for independent editor positioning (motion math retained); marked canvas backgrounds so bound scene images render underneath"
     },
     {
       "file": "stack.tsx",
       "upstreamFile": "talk-stack-fan-out.tsx",
       "upstreamSha256": "f28246b30505e7fc69dcb42f58f5ce9e5c21f16ae0059bbded4816336e15b6b1",
-      "localSha256": "653fa6bc1e7935353210f30458d4e5f139eb6e7af91a4a6c609ddcc6d33e22ae",
-      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; stable semantic element IDs for independent editor positioning (motion math retained)"
+      "localSha256": "a981a50fddc766517ab9d9d38ef7f8fc2eff716805b4e768c321b236e4b86b6d",
+      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; stable semantic element IDs for independent editor positioning (motion math retained); marked canvas backgrounds so bound scene images render underneath"
     },
     {
       "file": "retype.tsx",
       "upstreamFile": "talk-error-retype.tsx",
       "upstreamSha256": "b00625240a6b2b3b08eb4e637ee521cb91d161fe394e39a84a4f84248f51b732",
-      "localSha256": "4b8129b9562205b2c73a02cd8f8a0bd82faa4fbe6bf4fbe7dec65a027414559d",
-      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; stable semantic element IDs for independent editor positioning (motion math retained)"
+      "localSha256": "e2d915a4810eac20e530c18b3272cc7ec24688d84bff28e79c027bd366faedf9",
+      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; stable semantic element IDs for independent editor positioning (motion math retained); marked canvas backgrounds so bound scene images render underneath"
     },
     {
       "file": "focus.tsx",
       "upstreamFile": "talk-rack-focus-pair.tsx",
       "upstreamSha256": "ec1abd22525f165a3d4c55b34872fae1efd408f32cbe26e4ee236cffa0640c4d",
-      "localSha256": "2f66e97f4d08b1aa432980cc6548199856eaef5344f08f0cd722b89011e17bed",
-      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; Focus crossover drives both card z-indices so inactive shadows cannot occlude active text; stable semantic element IDs for independent editor positioning (motion math retained)"
+      "localSha256": "9f4be9ddebf6c71f69f81d222c664f7275af969fc9af2a1f6b1d5da2c4b0b5f5",
+      "changes": "System Chinese font fallback; highlighter copy parameterized; motion math retained; Focus crossover drives both card z-indices so inactive shadows cannot occlude active text; stable semantic element IDs for independent editor positioning (motion math retained); marked canvas backgrounds so bound scene images render underneath"
     }
   ],
   "upstreamTreeSha": "59b9e9957957dc9f3fd94ab78f95cec33c29e915"
