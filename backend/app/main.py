@@ -1,3 +1,4 @@
+# Author: Codex | Modified: 2026-11-21 21:00:00 +08:00 | Serve shared template assets for live Player.
 """FastAPI 后端主应用。
 
 提供 Web 工作台所需的 REST API：
@@ -53,6 +54,8 @@ _proj_root.mkdir(parents=True, exist_ok=True)
 
 app.mount("/media/library", StaticFiles(directory=str(_lib_root)), name="media-library")
 app.mount("/media/projects", StaticFiles(directory=str(_proj_root)), name="media-projects")
+
+app.mount("/template-assets", StaticFiles(directory=str(_ROOT / "remotion" / "public")), name="template-assets")
 
 # 前端构建产物（生产模式）
 _web_dist = _ROOT / "frontend" / "dist"

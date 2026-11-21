@@ -1,3 +1,4 @@
+/** Author: Codex | Modified: 2026-11-21 18:00:00 +08:00 | External template attribution. */
 /** 前端类型定义，与后端 Pydantic 模型对应。 */
 
 export interface TemplateParam {
@@ -23,6 +24,10 @@ export interface TemplateMeta {
   previewExists: boolean;
   posterJpg: string;
   sourceAvailable: boolean;
+  sourceName?: string;
+  sourceUrl?: string;
+  originalId?: string;
+  adaptation?: string;
   useCases: string[];
   notUseCases: string[];
   aspectRatios: string[];

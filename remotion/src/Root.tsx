@@ -18,12 +18,25 @@ const TextScene = withSceneBackground(TextReveal);
 const FlowScene = withSceneBackground(FlowExpand);
 const CompareScene = withSceneBackground(ConceptCompare);
 const DataScene = withSceneBackground(DataTrend);
+import { FredHighlight, FredStack, FredRetype, FredFocus } from "./components/FredTemplates";
+import {NumberCounter,MediaFlash,CounterFlashIntro} from "./components/CounterFlash";
+import {StickerExplainer} from "./components/StickerExplainer";
+import {EditableScene} from "./components/EditableScene";
 const FPS = 30;
 
 /** Register real previews at their native output dimensions. */
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition id="SCENE-EDIT" component={EditableScene} durationInFrames={150} fps={30} width={1440} height={1080} defaultProps={{templateId:"TEXT-001",content:{keyword:"实时编辑"},layout:{x:0,y:0,scale:1,transparent:false},startMs:0,endMs:5000}} calculateMetadata={({props})=>({durationInFrames:Math.max(1,Math.ceil(props.endMs*.03))})}/>
+      <Composition id="STICKER-001" component={StickerExplainer} durationInFrames={270} fps={30} width={1440} height={1080}/>
+      <Composition id="NUMBER-001" component={NumberCounter} durationInFrames={150} fps={30} width={1440} height={1080}/>
+      <Composition id="MEDIA-001" component={MediaFlash} durationInFrames={150} fps={30} width={1440} height={1080}/>
+      <Composition id="INTRO-001" component={CounterFlashIntro} durationInFrames={150} fps={30} width={1440} height={1080}/>
+      <Composition id="FRED-V087" component={FredHighlight} durationInFrames={90} fps={30} width={1440} height={1080}/>
+      <Composition id="FRED-STACK" component={FredStack} durationInFrames={204} fps={30} width={1440} height={1080}/>
+      <Composition id="FRED-RETYPE" component={FredRetype} durationInFrames={177} fps={30} width={1440} height={1080}/>
+      <Composition id="FRED-FOCUS" component={FredFocus} durationInFrames={216} fps={30} width={1440} height={1080}/>
       <Composition
         id="TEXT-001"
         component={TextScene}

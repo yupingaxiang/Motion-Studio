@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-21T02:33:38.349082+00:00",
+  "generatedAt": "2026-11-21T04:02:14.717215+00:00",
   "templates": [
     {
       "templateId": "COMP-001",
@@ -88,6 +88,222 @@
         "4:3"
       ],
       "durationFrames": 120,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "FRED-FOCUS",
+      "name": "Fred · 双图焦点接力",
+      "version": "1.0.1",
+      "status": "APPROVED",
+      "category": "COMP",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "双图",
+        "比较",
+        "聚焦"
+      ],
+      "tags": [
+        "FredTalk",
+        "Fred",
+        "外部模板",
+        "talk-rack-focus-pair"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 216,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "FRED-RETYPE",
+      "name": "Fred · 文字删除与重写",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "TEXT",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "文字强调",
+        "重点",
+        "纠正"
+      ],
+      "tags": [
+        "FredTalk",
+        "Fred",
+        "外部模板",
+        "talk-error-retype"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 177,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "FRED-STACK",
+      "name": "Fred · 图片叠放与扇开",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "FLOW",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "图片展示",
+        "作品",
+        "展开"
+      ],
+      "tags": [
+        "FredTalk",
+        "Fred",
+        "外部模板",
+        "talk-stack-fan-out"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 204,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "FRED-V087",
+      "name": "Fred · 荧光笔重点揭示",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "TEXT",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "文字强调",
+        "重点",
+        "纠正"
+      ],
+      "tags": [
+        "FredTalk",
+        "Fred",
+        "外部模板",
+        "V087"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 90,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "INTRO-001",
+      "name": "数字 × 素材快切",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "TEXT",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "开场",
+        "快切",
+        "数字",
+        "组合"
+      ],
+      "tags": [
+        "开场",
+        "快切",
+        "数字",
+        "组合"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 150,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "MEDIA-001",
+      "name": "素材快切 · 定格展开",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "FLOW",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "快切",
+        "素材",
+        "图片",
+        "视频",
+        "蒙太奇"
+      ],
+      "tags": [
+        "快切",
+        "素材",
+        "图片",
+        "视频",
+        "蒙太奇"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 150,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "NUMBER-001",
+      "name": "数字快进 · 落定揭示",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "DATA",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "数字",
+        "计数",
+        "递增",
+        "开场"
+      ],
+      "tags": [
+        "数字",
+        "计数",
+        "递增",
+        "开场"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 150,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "STICKER-001",
+      "name": "贴纸风科普 · 分步讲解",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "FLOW",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "流程讲解",
+        "工具介绍",
+        "知识科普",
+        "分步说明"
+      ],
+      "tags": [
+        "贴纸",
+        "科普",
+        "步骤",
+        "工具箱",
+        "纸张",
+        "手绘"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 270,
       "requiredAssets": []
     },
     {

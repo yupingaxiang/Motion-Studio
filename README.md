@@ -210,3 +210,22 @@ motion-studio/
 生成后的真实 MP4 放在 projects/P/output/，在分镜页点击“成片审看”。逐文件意见保存到 output-reviews.json，AI 下次读 review-brief 即可收到。此流程不依赖特定聊天平台 API，纯聊天平台仍需本地工具协助交接。
 # Motion-Studio
 剪辑工作台
+
+
+## FredTalk 首批源码接入
+
+新增 FRED-V087（荧光笔重点）、FRED-STACK（图片叠放扇开）、FRED-RETYPE（删除重写）、FRED-FOCUS（双图焦点）。实际源码来自公开 FredTalk 项目，MIT 许可保存在 remotion/src/components/fred/LICENSE，来源/原始及本地哈希在 provenance.json。没有把上游 MP4 当作可执行组件。
+
+四个输出为 1440×1080 / 4:3，原960×540几何等比居中，上下保留留白；不是原生4:3重排。工作台可按“模板来源 → FredTalk”筛选并查看来源和参数。图片演示使用本项目模板封面，新项目需AI换为实际图片。此次仅首批四个，不代表432条上游记录全部已接入。
+
+
+## 数字与素材快切模板
+
+参考用户提供的 library/video/1.mp4 开头机制，新增独立 NUMBER-001、MEDIA-001 和组合 INTRO-001，全部4:3 / 1440×1080 / 30fps。数字与快切速度可配置，标题在落定后展开。示例使用本项目授权模板图片/视频，没有将参考视频内容复制进模板。
+
+AI把实际素材复制到Remotion public后，通过候选 proposedProps.srcs 填入相对路径。支持图片及MP4/WebM/MOV，视频默认从第30帧取材，videoStartFrames可设为0；短素材须先核对时长。组合模板由countFrames统一控制计数和快切结束，避免时间错位。
+
+
+## 贴纸风科普
+
+STICKER-001：薄荷绿纸纹、白边剪纸、手绘连线、便签与结论贴纸。原生1440×1080、4:3、30fps，默认9秒。通过cueFrames将最多5个节点绑定到实际口播时间，srcs可替换为Remotion public内的真实本地贴纸图片；未填使用自绘SVG。右下角为后续口播人物预留空间，不代表本模板已合成人物。

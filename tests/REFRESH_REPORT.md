@@ -22,3 +22,22 @@
 - Frontend TypeScript and production build PASS.
 - New commands: publish-storyboard and review-brief. Skill now includes standard frontmatter, AI-side Excel intake and no workbench AI invocation.
 - Output review lists existing MP4 only, persists notes atomically, feeds them back to AI. No real complete movie was generated as part of this task.
+
+## FredTalk first-batch import
+- Actual public MIT source integrated for V087/highlighter, stack fan-out, error retype, rack-focus pair. Upstream source hashes, imported tree SHA and local adapted hashes recorded.
+- Four full local MP4 renders PASS; all H.264 1440x1080 30fps, full FFmpeg decode PASS. Representative frames inspected. Original16:9 geometry uniformly fitted into 4:3, not reflowed.
+- Fred provenance/registration tests PASS, Remotion TypeScript PASS, frontend build PASS.
+- Browser FredTalk source filter returns four cards; details expose provenance/parameters; actual autoplay verified videoWidth=1440/videoHeight=1080.
+- Records promoted from DRAFT to APPROVED only after successful render/decode. Existing user selections unchanged. Not the entire432-entry upstream catalog.
+
+## Counter/media flash reference extraction
+- Added independent NUMBER-001 and MEDIA-001 plus composed INTRO-001; original mechanisms reimplemented from inspected opening, no reference footage copied into demo assets.
+- 10 pure frame-math assertions PASS (count endpoints, descending count, cut boundaries, hold, empty inputs). Remotion TypeScript PASS.
+- All three real renders and full FFmpeg decode PASS; H.264 1440x1080 30fps, exactly5 seconds. Cards promoted after validation; backend API lists all three APPROVED with previewExists=true.
+- Inspected numeric mid-count, settled title layout, eight successive media cut frames (including actual video inputs) and composed intro. Video start offset configurable; defaults30 frames to avoid blank source openings.
+
+## Sticker explainer
+- STICKER-001 original 4:3 composition built from inspected reference style: mint paper, outlined original SVG stickers, drawn connectors, taped notes.
+- Configurable 2-5 node labels/images and cueFrames support per-node narration timing; no presenter footage fabricated. Lower-right reserved.
+- TypeScript PASS; real render/full FFmpeg decode PASS, H.264 1440x1080 30fps,9s. Inspected2.8s and7.5s states; reduced summary font to remove orphan character and rerendered.
+- Promoted to APPROVED after validation and rebuilt catalog.

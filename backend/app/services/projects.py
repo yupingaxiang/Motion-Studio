@@ -513,9 +513,43 @@ def review_brief(project_id: str) -> dict[str, Any]:
     import json
     output_reviews_path = project_dir(project_id) / "output-reviews.json"
     output_reviews = json.loads(output_reviews_path.read_text(encoding="utf-8-sig")) if output_reviews_path.exists() else {"reviews":[]}
-    return {"outputReviews":output_reviews["reviews"],"projectId":project_id,"storyboardRevision":sb.projectRevision,
+    return {"sceneEdits":read_scene_edits(project_id),"outputReviews":output_reviews["reviews"],"projectId":project_id,"storyboardRevision":sb.projectRevision,
             "recommendationRevision":recs.recommendationRevision if recs else 0,
             "recommendationsStale":stale,"nextAction":action,
             "allConfirmed":status["allConfirmed"],"issues":issues,"scenes":rows,
             "workbenchPath":f"/#/review/{project_id}",
             "instruction":"AI reads this packet in the current conversation. Preserve locked choices. Workbench never starts AI or production."}
+
+
+def read_scene_edits(project_id: str) -> dict[str, Any]:
+    """Read editor overrides without modifying AI planning or user approvals."""
+    from ..models.scene_edits import SceneEdits
+    path=project_dir(project_id)/"scene-edits.json"
+    return (read_json_model(path,SceneEdits) if path.exists() else SceneEdits()).model_dump()
+
+
+def save_scene_edit(project_id: str, scene_id: str, edit: dict, expected_revision: int) -> dict:
+    """Save validated visual overrides; reject locked scenes, stale versions and out-of-scene timing."""
+    from ..models.scene_edits import SceneEdits,SceneEdit
+    from . import library as lib
+    storyboard=read_storyboard(project_id)
+    scene=next((s for s in storyboard.scenes if s.sceneId==scene_id),None)
+    if not scene:raise ValueError("分镜不存在")
+    if any(a.sceneId==scene_id and a.locked for a in read_approvals_safe(project_id).approvals):
+        raise PermissionError("分镜已确认，请先撤销确认后再编辑")
+    saved=SceneEdits.model_validate(read_scene_edits(project_id))
+    if saved.revision!=expected_revision:raise ValueError("编辑版本已变化，请重新载入后再保存")
+    item=SceneEdit.model_validate(edit)
+    meta=lib.get_template(item.templateId)
+    if not meta or meta.status!="APPROVED" or meta.version!=item.templateVersion:
+        raise ValueError("模板不存在、未通过验证或版本已变化")
+    if item.endMs>scene.endMs-scene.startMs:raise ValueError("动效不能超出当前分镜时长")
+    allowed={p.name for p in meta.params}|{"styleId"}
+    if set(item.props)-allowed:raise ValueError("存在模板未声明的参数")
+    if item.layout.transparent and item.templateId not in {"TEXT-001","FLOW-001","COMP-001","DATA-001","NUMBER-001","STICKER-001"}:
+        raise ValueError("此模板暂不支持透明前景")
+    saved.scenes[scene_id]=item
+    saved.revision+=1
+    saved.updatedAt=now_iso()
+    atomic_write_json(project_dir(project_id)/"scene-edits.json",saved)
+    return saved.model_dump()

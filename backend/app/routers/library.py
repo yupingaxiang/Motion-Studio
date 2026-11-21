@@ -1,3 +1,4 @@
+# Author: Codex | Modified: 2026-11-21 18:00:00 +08:00 | Preserve template provenance in API.
 """库浏览路由：模板、风格、catalog。"""
 
 from __future__ import annotations
@@ -36,6 +37,10 @@ def list_templates(status: str | None = None):
                 "previewExists": bool(preview),
                 "posterJpg": m.posterJpg,
                 "sourceAvailable": m.sourceAvailable,
+                "sourceName": m.sourceName,
+                "sourceUrl": m.sourceUrl,
+                "originalId": m.originalId,
+                "adaptation": m.adaptation,
                 "useCases": m.useCases,
                 "notUseCases": m.notUseCases,
                 "aspectRatios": m.aspectRatios,

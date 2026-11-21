@@ -170,3 +170,24 @@ def save_output_review(project_id: str, body: OutputFeedback):
     saved.reviews = [r for r in saved.reviews if r.file != body.file] + [body]
     atomic_write_json(path, saved)
     return body.model_dump()
+
+
+class EditRequest(BaseModel):
+    """Revision-checked editor write request."""
+    expectedRevision:int
+    edit:dict
+
+
+@router.get("/{project_id}/scene-edits")
+def get_scene_edits(project_id:str):
+    """Read persisted manual edits for live editing and AI continuation."""
+    if project_id not in proj.list_projects():raise HTTPException(404,"项目不存在")
+    return proj.read_scene_edits(project_id)
+
+
+@router.put("/{project_id}/scenes/{scene_id}/edit")
+def save_scene_edit(project_id:str,scene_id:str,body:EditRequest):
+    """Save visual edits without approving or replacing AI candidates."""
+    if project_id not in proj.list_projects():raise HTTPException(404,"项目不存在")
+    try:return proj.save_scene_edit(project_id,scene_id,body.edit,body.expectedRevision)
+    except (ValueError,PermissionError) as exc:raise HTTPException(409,str(exc))

@@ -83,6 +83,10 @@ class TemplateMeta(BaseModel):
     previewMp4: str = Field(description="相对 library/motions/<id>/ 的 preview.mp4 路径")
     posterJpg: str = Field(description="相对 library/motions/<id>/ 的 poster.jpg 路径")
     sourceAvailable: bool = True
+    sourceName: str = "Motion Studio"
+    sourceUrl: str = ""
+    originalId: str = ""
+    adaptation: str = ""
 
     # 适用性
     useCases: list[str] = Field(default_factory=list, description="适用场景关键词")
