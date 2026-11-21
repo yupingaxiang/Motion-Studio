@@ -1,0 +1,56 @@
+{
+  "templateId": "FLOW-001",
+  "optionalAssets": [
+    "icon"
+  ],
+  "posterJpg": "poster.jpg",
+  "minDurationFrames": 90,
+  "durationFrames": 120,
+  "component": "FlowExpand.tsx",
+  "name": "流程节点展开",
+  "requiredAssets": [],
+  "notUseCases": [
+    "单一数字",
+    "纯标题"
+  ],
+  "sourceAvailable": true,
+  "description": "横向编号节点依次展开，进度连线推进，适合步骤与递进关系。",
+  "aspectRatios": [
+    "4:3"
+  ],
+  "maxDurationFrames": 240,
+  "compositionId": "FLOW-001",
+  "useCases": [
+    "流程",
+    "循环",
+    "步骤",
+    "节点",
+    "因果"
+  ],
+  "status": "APPROVED",
+  "version": "1.1.0",
+  "previewMp4": "preview.mp4",
+  "params": [
+    {
+      "label": "节点列表（逗号分隔）",
+      "default": "本金,收益,新本金,新收益",
+      "name": "nodes",
+      "type": "string",
+      "required": true
+    },
+    {
+      "label": "标题",
+      "default": "利滚利的循环",
+      "name": "title",
+      "type": "string"
+    }
+  ],
+  "category": "FLOW",
+  "tags": [
+    "flow",
+    "process",
+    "cycle",
+    "steps",
+    "流程"
+  ]
+}

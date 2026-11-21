@@ -1,0 +1,16 @@
+{
+  "projectId": "demo-project",
+  "approvals": [
+    {
+      "sceneId": "S01",
+      "selectedTemplateId": "",
+      "selectedTemplateVersion": "",
+      "approvalStatus": "PENDING",
+      "modificationNotes": "",
+      "approvedAt": "",
+      "basedOnRecommendationRevision": 1,
+      "locked": false
+    }
+  ],
+  "updatedAt": "2026-11-21T02:37:48.182636+00:00"
+}

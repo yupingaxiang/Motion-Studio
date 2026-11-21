@@ -1,0 +1,347 @@
+{
+  "projectId": "demo-project",
+  "recommendationRevision": 1,
+  "basedOnStoryboardRevision": 1,
+  "scenes": [
+    {
+      "sceneId": "S01",
+      "recommendationRevision": 1,
+      "candidates": [
+        {
+          "templateId": "TEXT-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/TEXT-001/preview.mp4",
+          "posterPath": "library/motions/TEXT-001/poster.jpg",
+          "recommendationReason": "该分镜需强调核心概念，TEXT-001 关键词揭示组件以高光汇聚形式呈现「大家好，今天」",
+          "score": 0.5,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "keyword": "关键词「复利",
+            "subtitle": "大家好，今天介绍一个概念：复利。",
+            "styleId": "minimal-tech"
+          }
+        },
+        {
+          "templateId": "TRANS-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/TRANS-001/preview.mp4",
+          "posterPath": "library/motions/TRANS-001/poster.jpg",
+          "recommendationReason": "该分镜为过渡/结尾，TRANS-001 色块扫入收尾",
+          "score": 0.067,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "title": "大家好，今天介绍一个概念",
+            "styleId": "minimal-tech"
+          }
+        },
+        {
+          "templateId": "FLOW-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/FLOW-001/preview.mp4",
+          "posterPath": "library/motions/FLOW-001/poster.jpg",
+          "recommendationReason": "该分镜描述流程/循环，FLOW-001 节点展开串联展示因果链",
+          "score": 0.04,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "nodes": [
+              "本金",
+              "收益",
+              "新本金",
+              "新收益"
+            ],
+            "title": "大家好，今天介绍一个概念：复利。",
+            "styleId": "minimal-tech"
+          }
+        }
+      ],
+      "generatedAt": "2026-11-20T16:09:18.359358+00:00"
+    },
+    {
+      "sceneId": "S02",
+      "recommendationRevision": 1,
+      "candidates": [
+        {
+          "templateId": "FLOW-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/FLOW-001/preview.mp4",
+          "posterPath": "library/motions/FLOW-001/poster.jpg",
+          "recommendationReason": "该分镜描述流程/循环，FLOW-001 节点展开串联展示因果链",
+          "score": 0.527,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "nodes": [
+              "本金",
+              "收益",
+              "新本金",
+              "新收益"
+            ],
+            "title": "复利就是利滚利，收益会产生新的收益。",
+            "styleId": "minimal-tech"
+          }
+        },
+        {
+          "templateId": "COMP-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/COMP-001/preview.mp4",
+          "posterPath": "library/motions/COMP-001/poster.jpg",
+          "recommendationReason": "该分镜涉及对比，COMP-001 左右分裂对比单利与复利",
+          "score": 0.04,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "leftLabel": "单利",
+            "rightLabel": "复利",
+            "leftValue": "线性增长",
+            "rightValue": "指数增长",
+            "styleId": "minimal-tech"
+          }
+        },
+        {
+          "templateId": "DATA-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/DATA-001/preview.mp4",
+          "posterPath": "library/motions/DATA-001/poster.jpg",
+          "recommendationReason": "该分镜含数字增长，DATA-001 数字滚动配合曲线展示增长趋势",
+          "score": 0.04,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "startValue": "1.00",
+            "endValue": "37.78",
+            "caption": "复利就是利滚利，收益会产生新的收益。",
+            "styleId": "minimal-tech"
+          }
+        }
+      ],
+      "generatedAt": "2026-11-20T16:09:18.362685+00:00"
+    },
+    {
+      "sceneId": "S03",
+      "recommendationRevision": 1,
+      "candidates": [
+        {
+          "templateId": "DATA-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/DATA-001/preview.mp4",
+          "posterPath": "library/motions/DATA-001/poster.jpg",
+          "recommendationReason": "该分镜含数字增长，DATA-001 数字滚动配合曲线展示增长趋势",
+          "score": 0.55,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "startValue": "1.00",
+            "endValue": "37.78",
+            "caption": "举个例子，每天进步百分之一，一年后会变成原来的三十七倍。",
+            "styleId": "blueprint"
+          }
+        },
+        {
+          "templateId": "COMP-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/COMP-001/preview.mp4",
+          "posterPath": "library/motions/COMP-001/poster.jpg",
+          "recommendationReason": "该分镜涉及对比，COMP-001 左右分裂对比单利与复利",
+          "score": 0.167,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "leftLabel": "单利",
+            "rightLabel": "复利",
+            "leftValue": "线性增长",
+            "rightValue": "指数增长",
+            "styleId": "blueprint"
+          }
+        },
+        {
+          "templateId": "FLOW-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/FLOW-001/preview.mp4",
+          "posterPath": "library/motions/FLOW-001/poster.jpg",
+          "recommendationReason": "该分镜描述流程/循环，FLOW-001 节点展开串联展示因果链",
+          "score": 0.033,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "nodes": [
+              "本金",
+              "收益",
+              "新本金",
+              "新收益"
+            ],
+            "title": "举个例子，每天进步百分之一，一年后会变成",
+            "styleId": "blueprint"
+          }
+        }
+      ],
+      "generatedAt": "2026-11-20T16:09:18.365850+00:00"
+    },
+    {
+      "sceneId": "S04",
+      "recommendationRevision": 1,
+      "candidates": [
+        {
+          "templateId": "COMP-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/COMP-001/preview.mp4",
+          "posterPath": "library/motions/COMP-001/poster.jpg",
+          "recommendationReason": "该分镜涉及对比，COMP-001 左右分裂对比单利与复利",
+          "score": 0.297,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "leftLabel": "单利",
+            "rightLabel": "复利",
+            "leftValue": "线性增长",
+            "rightValue": "指数增长",
+            "styleId": "blueprint"
+          }
+        },
+        {
+          "templateId": "DATA-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/DATA-001/preview.mp4",
+          "posterPath": "library/motions/DATA-001/poster.jpg",
+          "recommendationReason": "该分镜含数字增长，DATA-001 数字滚动配合曲线展示增长趋势",
+          "score": 0.128,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "startValue": "1.00",
+            "endValue": "37.78",
+            "caption": "左侧是单利，右侧是复利，对比非常明显。",
+            "styleId": "blueprint"
+          }
+        },
+        {
+          "templateId": "TEXT-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/TEXT-001/preview.mp4",
+          "posterPath": "library/motions/TEXT-001/poster.jpg",
+          "recommendationReason": "该分镜需强调核心概念，TEXT-001 关键词揭示组件以高光汇聚形式呈现「左侧是单利，」",
+          "score": 0.077,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "keyword": "单利线性增长",
+            "subtitle": "左侧是单利，右侧是复利，对比非常明显。",
+            "styleId": "blueprint"
+          }
+        }
+      ],
+      "generatedAt": "2026-11-20T16:09:18.369951+00:00"
+    },
+    {
+      "sceneId": "S05",
+      "recommendationRevision": 1,
+      "candidates": [
+        {
+          "templateId": "DEMO-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/DEMO-001/preview.mp4",
+          "posterPath": "library/motions/DEMO-001/poster.jpg",
+          "recommendationReason": "该分镜涉及操作演示，DEMO-001 录屏聚焦（需真实录屏素材，当前为演示数据）",
+          "score": 0.111,
+          "requiredAssets": [
+            "recording"
+          ],
+          "compatibility": "needs-assets",
+          "proposedProps": {
+            "caption": "关键在于坚持，时间会放大每一次小小的进步",
+            "styleId": "minimal-tech"
+          }
+        },
+        {
+          "templateId": "TEXT-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/TEXT-001/preview.mp4",
+          "posterPath": "library/motions/TEXT-001/poster.jpg",
+          "recommendationReason": "该分镜需强调核心概念，TEXT-001 关键词揭示组件以高光汇聚形式呈现「关键在于坚持」",
+          "score": 0.077,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "keyword": "时间轴上小步",
+            "subtitle": "关键在于坚持，时间会放大每一次小小的进步。",
+            "styleId": "minimal-tech"
+          }
+        },
+        {
+          "templateId": "DATA-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/DATA-001/preview.mp4",
+          "posterPath": "library/motions/DATA-001/poster.jpg",
+          "recommendationReason": "该分镜含数字增长，DATA-001 数字滚动配合曲线展示增长趋势",
+          "score": 0.072,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "startValue": "1.00",
+            "endValue": "37.78",
+            "caption": "关键在于坚持，时间会放大每一次小小的进步。",
+            "styleId": "minimal-tech"
+          }
+        }
+      ],
+      "generatedAt": "2026-11-20T16:09:18.374138+00:00"
+    },
+    {
+      "sceneId": "S06",
+      "recommendationRevision": 1,
+      "candidates": [
+        {
+          "templateId": "TRANS-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/TRANS-001/preview.mp4",
+          "posterPath": "library/motions/TRANS-001/poster.jpg",
+          "recommendationReason": "该分镜为过渡/结尾，TRANS-001 色块扫入收尾",
+          "score": 0.35,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "title": "这就是复利的力量。",
+            "styleId": "minimal-tech"
+          }
+        },
+        {
+          "templateId": "COMP-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/COMP-001/preview.mp4",
+          "posterPath": "library/motions/COMP-001/poster.jpg",
+          "recommendationReason": "该分镜涉及对比，COMP-001 左右分裂对比单利与复利",
+          "score": 0.0,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "leftLabel": "单利",
+            "rightLabel": "复利",
+            "leftValue": "线性增长",
+            "rightValue": "指数增长",
+            "styleId": "minimal-tech"
+          }
+        },
+        {
+          "templateId": "DATA-001",
+          "templateVersion": "1.0.0",
+          "previewPath": "library/motions/DATA-001/preview.mp4",
+          "posterPath": "library/motions/DATA-001/poster.jpg",
+          "recommendationReason": "该分镜含数字增长，DATA-001 数字滚动配合曲线展示增长趋势",
+          "score": 0.0,
+          "requiredAssets": [],
+          "compatibility": "full",
+          "proposedProps": {
+            "startValue": "1.00",
+            "endValue": "37.78",
+            "caption": "这就是复利的力量。",
+            "styleId": "minimal-tech"
+          }
+        }
+      ],
+      "generatedAt": "2026-11-20T16:09:18.377298+00:00"
+    }
+  ],
+  "updatedAt": "2026-11-20T22:57:54.940456+00:00"
+}

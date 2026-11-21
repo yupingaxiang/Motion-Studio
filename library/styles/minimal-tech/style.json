@@ -1,0 +1,54 @@
+{
+  "styleId": "minimal-tech",
+  "name": "Minimal Tech 极简科技",
+  "description": "深色背景上的高对比极简科技风。以青蓝色高光、网格底纹、几何线条为核心，强调清晰的信息层级与冷峻的科技感。色彩克制，留白充足，动效干净利落。",
+  "colors": [
+    { "name": "背景深蓝黑", "hex": "#0A0E1A", "usage": "主背景" },
+    { "name": "前景纯白", "hex": "#FFFFFF", "usage": "主文字、主体" },
+    { "name": "主色青蓝", "hex": "#00D4FF", "usage": "高光、强调、线条、边框" },
+    { "name": "强调粉红", "hex": "#FF3D71", "usage": "对比标记、VS、警告，仅用于关键强调点" },
+    { "name": "静默灰", "hex": "#5A6478", "usage": "次要文字、网格线、辅助元素" }
+  ],
+  "background": "#0A0E1A",
+  "foreground": "#FFFFFF",
+  "compositionRules": [
+    "画面以垂直中轴对称为主，核心元素居中",
+    "留白占画面 40% 以上，避免元素拥挤",
+    "网格底纹透明度不超过 50%，不抢主体",
+    "文字与边缘保持至少 60px 安全边距",
+    "强调色（粉红）单帧不超过画面 10% 面积",
+    "主色青蓝用于线条与边框，不用于大面积填充"
+  ],
+  "fontSuggestions": [
+    "无衬线体（Arial / Helvetica / 思源黑体），字重 700-900 用于标题",
+    "同字体字重 400 用于正文，避免混用多种字体",
+    "等宽体（Courier New）仅用于数据/数字场景"
+  ],
+  "titleFont": "Arial, Helvetica, sans-serif",
+  "bodyFont": "Arial, Helvetica, sans-serif",
+  "animationRhythm": [
+    "入场用 spring（damping 12-14），干净利落不拖沓",
+    "退场用 0.5 秒线性淡出，不反转方向",
+    "元素间隔 15-20 帧（0.5-0.7 秒）依次出现，制造节奏感",
+    "高光扫过速度恒定，2-3 秒横跨全屏",
+    "禁止使用弹跳、过冲超过 5%、旋转入场",
+    "数字滚动用 ease-out cubic，不用线性"
+  ],
+  "imagePromptTemplate": "minimalist tech style, dark navy background #0A0E1A, cyan blue accents #00D4FF, clean geometric lines, grid texture, high contrast, lots of negative space, flat design, no gradients except subtle glow, 9:16 vertical composition, {subject}",
+  "negativePrompt": "no realistic textures, no warm colors, no organic shapes, no clutter, no gradients fills, no drop shadows, no handwritten fonts, no 3D rendering, no photographic backgrounds",
+  "exampleImage": "",
+  "exampleVideo": "",
+  "recommendedScenes": [
+    "科技概念解释",
+    "产品功能介绍",
+    "数据可视化",
+    "开场标题",
+    "流程与步骤说明"
+  ],
+  "forbiddenScenes": [
+    "温馨情感类内容（过于冷峻）",
+    "复古怀旧主题（与科技感冲突）",
+    "需要丰富色彩插画的场景"
+  ],
+  "tags": ["极简", "科技", "深色", "青蓝", "几何", "现代", "clean", "tech", "dark"]
+}

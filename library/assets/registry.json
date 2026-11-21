@@ -1,0 +1,20 @@
+{
+  "assets": [
+    {
+      "assetId": "9b7d07896bd3",
+      "name": "1.mp4",
+      "mediaType": "video",
+      "localPath": "c8bea18d_1.mp4",
+      "previewPath": "c8bea18d_1_poster.jpg",
+      "tags": [],
+      "source": "",
+      "license": "",
+      "fileSizeBytes": 16554817,
+      "width": 0,
+      "height": 0,
+      "durationMs": 0,
+      "usageCount": 0,
+      "createdAt": "2026-11-21T02:28:41.552511+00:00"
+    }
+  ]
+}

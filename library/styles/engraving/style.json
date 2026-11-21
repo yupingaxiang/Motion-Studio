@@ -1,0 +1,55 @@
+{
+  "styleId": "engraving",
+  "name": "Engraving 铜版画/雕版插画",
+  "description": "以铜版画/雕版印刷为灵感的复古插画风。暖色纸张底、深褐墨线、密集排线与交叉线构建明暗。借鉴铜版画的排线、放大圆图与铭刻字体美学，但全部原创色彩与构图，不复制任何历史作品。",
+  "colors": [
+    { "name": "羊皮纸黄", "hex": "#F4ECD8", "usage": "主背景，模拟陈年纸张" },
+    { "name": "深褐墨", "hex": "#1A1A1A", "usage": "主线条、轮廓、文字" },
+    { "name": "铜版棕", "hex": "#3D2817", "usage": "标题、主体轮廓加深" },
+    { "name": "锈红强调", "hex": "#8B4513", "usage": "强调、放大圆图边框，仅局部" },
+    { "name": "陈旧米灰", "hex": "#8A7E5F", "usage": "次要排线、辅助标注" }
+  ],
+  "background": "#F4ECD8",
+  "foreground": "#1A1A1A",
+  "compositionRules": [
+    "主体置于画面中央版心内，四周留边距用于标注与放大圆图",
+    "明暗由排线密度产生，不使用填充色块（线条即明暗）",
+    "放大圆图：双线圆框 + 主体白晕，用于细节强调",
+    "单一光源方向（左上），背光侧轮廓加重",
+    "色彩极少：仅锈红用于关键强调，主体保持墨色",
+    "文字模拟铭刻：标题罗马大写感，注释斜体感（用 serif 字体）"
+  ],
+  "fontSuggestions": [
+    "衬线体（Georgia / Times New Roman），标题大写、字重 700",
+    "注释用同字体斜体，模拟手写题注",
+    "字号固定，不缩放，平衡换行",
+    "禁止使用无衬线体或等宽体"
+  ],
+  "titleFont": "Georgia, 'Times New Roman', serif",
+  "bodyFont": "Georgia, 'Times New Roman', serif",
+  "animationRhythm": [
+    "线条以'刻出'方式出现：沿路径绘制，恒定速度",
+    "排线分批出现：轮廓→主排线→交叉线→暗部，依次叠加",
+    "文字'逐字刻出'或'一笔写成'，不使用淡入",
+    "色彩（若有）从一点绽放，区域错峰，不用渐变",
+    "禁止 spring 弹性、滑入、淡入淡出；动效即'刻画'本身",
+    "主体呼吸推镜不超过 2%，色彩移动而非相机移动"
+  ],
+  "imagePromptTemplate": "copperplate engraving illustration style, aged parchment background #F4ECD8, dark brown ink lines #3D2817, dense cross-hatching for shading, roundel detail circles, serif inscribed lettering, vintage scientific illustration aesthetic, no color fills, {subject}",
+  "negativePrompt": "no color fills, no gradients, no photographic elements, no sans-serif fonts, no 3D rendering, no modern UI elements, no bright saturated colors, no smooth curves without hatching",
+  "exampleImage": "",
+  "exampleVideo": "",
+  "recommendedScenes": [
+    "博物科普与自然主题",
+    "历史与文化讲解",
+    "品牌传承与匠心故事",
+    "需要复古质感的概念图解",
+    "强调工艺与细节的内容"
+  ],
+  "forbiddenScenes": [
+    "现代科技产品界面（风格冲突）",
+    "实时数据动态更新（排线不适于变化数据）",
+    "高饱和度彩色内容"
+  ],
+  "tags": ["铜版画", "雕版", "复古", "排线", "插画", "纸张", "engraving", "vintage", "illustration", "serif"]
+}

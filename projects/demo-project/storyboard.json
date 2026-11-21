@@ -1,0 +1,62 @@
+{
+  "projectId": "demo-project",
+  "projectRevision": 1,
+  "script": "大家好，今天介绍一个概念：复利。\n复利就是利滚利，收益会产生新的收益。\n举个例子，每天进步百分之一，一年后会变成原来的三十七倍。\n左侧是单利，右侧是复利，对比非常明显。\n关键在于坚持，时间会放大每一次小小的进步。\n这就是复利的力量。",
+  "scenes": [
+    {
+      "sceneId": "S01",
+      "narration": "大家好，今天介绍一个概念：复利。",
+      "startMs": 0,
+      "endMs": 3000,
+      "visualIntent": "开场标题：关键词「复利」揭示，极简科技风格",
+      "assets": [],
+      "styleId": "minimal-tech"
+    },
+    {
+      "sceneId": "S02",
+      "narration": "复利就是利滚利，收益会产生新的收益。",
+      "startMs": 3000,
+      "endMs": 7500,
+      "visualIntent": "流程节点展开：本金→收益→新本金→新收益 的循环",
+      "assets": [],
+      "styleId": "minimal-tech"
+    },
+    {
+      "sceneId": "S03",
+      "narration": "举个例子，每天进步百分之一，一年后会变成原来的三十七倍。",
+      "startMs": 7500,
+      "endMs": 13500,
+      "visualIntent": "数字与趋势变化：1.01 的 365 次方增长曲线与最终数字 37.78",
+      "assets": [],
+      "styleId": "blueprint"
+    },
+    {
+      "sceneId": "S04",
+      "narration": "左侧是单利，右侧是复利，对比非常明显。",
+      "startMs": 13500,
+      "endMs": 18000,
+      "visualIntent": "左右概念对比：单利线性增长 vs 复利指数增长",
+      "assets": [],
+      "styleId": "blueprint"
+    },
+    {
+      "sceneId": "S05",
+      "narration": "关键在于坚持，时间会放大每一次小小的进步。",
+      "startMs": 18000,
+      "endMs": 22500,
+      "visualIntent": "数据强调：时间轴上小步累积被放大的视觉",
+      "assets": [],
+      "styleId": "minimal-tech"
+    },
+    {
+      "sceneId": "S06",
+      "narration": "这就是复利的力量。",
+      "startMs": 22500,
+      "endMs": 26000,
+      "visualIntent": "章节过渡到结尾卡片：复利的力量",
+      "assets": [],
+      "styleId": "minimal-tech"
+    }
+  ],
+  "updatedAt": "2026-11-20T16:09:13.145442+00:00"
+}

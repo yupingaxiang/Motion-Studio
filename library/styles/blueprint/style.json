@@ -1,0 +1,55 @@
+{
+  "styleId": "blueprint",
+  "name": "Blueprint 科技蓝图",
+  "description": "以工程蓝图美学为灵感的科技风。深蓝底色配浅蓝线条与标注，等宽字体，模拟技术图纸的标注、尺寸线与网格。适合结构化、技术性强的内容，强调精确与严谨。",
+  "colors": [
+    { "name": "蓝图深蓝", "hex": "#0B2A4A", "usage": "主背景，模拟蓝图纸底色" },
+    { "name": "标注浅蓝白", "hex": "#E8F1FF", "usage": "主文字、线条" },
+    { "name": "线蓝", "hex": "#7BB8FF", "usage": "主线条、边框、数据曲线" },
+    { "name": "标注橙", "hex": "#FFB347", "usage": "强调标注、测量点、关键数据" },
+    { "name": "结构灰蓝", "hex": "#4A6FA5", "usage": "辅助线、网格、次要结构" }
+  ],
+  "background": "#0B2A4A",
+  "foreground": "#E8F1FF",
+  "compositionRules": [
+    "画面模拟技术图纸：主体居中，四周留标注空间",
+    "使用尺寸线、引出线、圆点标记等图纸元素",
+    "网格底纹较密（30-40px），模拟方格纸",
+    "所有文字等宽对齐，标题与正文同字体不同字号",
+    "橙色仅用于关键标注点，每画面不超过 3 处",
+    "线条粗细分级：主结构 4-5px，辅助 2px，网格 1px"
+  ],
+  "fontSuggestions": [
+    "等宽字体（Courier New / Consolas），贯穿全片",
+    "标题用大字号等宽体，模拟图纸标题栏",
+    "数据与标注必须等宽，保证数字对齐",
+    "禁止使用衬线体或手写体"
+  ],
+  "titleFont": "'Courier New', Consolas, monospace",
+  "bodyFont": "'Courier New', Consolas, monospace",
+  "animationRhythm": [
+    "线条按'绘制'方式出现：从起点到终点沿路径展开",
+    "标注元素（尺寸线、引出线）紧跟主体之后出现",
+    "数据曲线分段绘制，配合坐标轴先现",
+    "入场速度均匀，模拟手绘图纸的笔触节奏",
+    "禁止 spring 弹性、过冲；用 ease-out 线性收尾",
+    "元素出现间隔 10-15 帧，保持图纸的有序感"
+  ],
+  "imagePromptTemplate": "technical blueprint style, deep blue background #0B2A4A, light blue lines #7BB8FF, monospace annotations, grid paper texture, measurement lines, engineering drawing aesthetic, precise geometric construction, {subject}",
+  "negativePrompt": "no photographic elements, no organic shapes, no warm color fills, no handwritten fonts, no 3D rendering, no gradients, no decorative illustrations, no soft shadows",
+  "exampleImage": "",
+  "exampleVideo": "",
+  "recommendedScenes": [
+    "技术原理图解",
+    "数据结构与流程",
+    "对比分析（单利vs复利等）",
+    "增长趋势可视化",
+    "系统架构说明"
+  ],
+  "forbiddenScenes": [
+    "情感叙事类内容（过于理性冷硬）",
+    "品牌宣传（缺乏温度）",
+    "需要真实图像或照片的场景"
+  ],
+  "tags": ["蓝图", "技术", "工程", "等宽", "标注", "图纸", "blueprint", "technical", "monospace"]
+}

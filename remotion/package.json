@@ -1,0 +1,26 @@
+{
+  "name": "motion-studio-remotion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Motion Studio Remotion 动效模板库",
+  "scripts": {
+    "dev": "remotion studio",
+    "render-previews": "python ../scripts/motion_studio.py render-template-previews",
+    "render-scene": "python ../scripts/motion_studio.py render-scene-preview --project demo-project --scene S01",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.545",
+    "@remotion/player": "4.0.545",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "4.0.545"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.5.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  }
+}

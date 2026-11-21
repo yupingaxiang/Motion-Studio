@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-21T02:33:38.349082+00:00",
+  "templates": [
+    {
+      "templateId": "COMP-001",
+      "name": "左右概念对比",
+      "version": "1.1.0",
+      "status": "APPROVED",
+      "category": "COMP",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "对比",
+        "比较",
+        "差异",
+        "左右",
+        "VS"
+      ],
+      "tags": [
+        "compare",
+        "vs",
+        "split",
+        "对比"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 120,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "DATA-001",
+      "name": "数字与趋势变化",
+      "version": "1.1.0",
+      "status": "APPROVED",
+      "category": "DATA",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "数字",
+        "数据",
+        "增长",
+        "趋势",
+        "倍数",
+        "统计"
+      ],
+      "tags": [
+        "data",
+        "number",
+        "trend",
+        "growth",
+        "数字",
+        "数据"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 150,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "FLOW-001",
+      "name": "流程节点展开",
+      "version": "1.1.0",
+      "status": "APPROVED",
+      "category": "FLOW",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "流程",
+        "循环",
+        "步骤",
+        "节点",
+        "因果"
+      ],
+      "tags": [
+        "flow",
+        "process",
+        "cycle",
+        "steps",
+        "流程"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 120,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "TEXT-001",
+      "name": "关键词揭示",
+      "version": "1.1.0",
+      "status": "APPROVED",
+      "category": "TEXT",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "关键词",
+        "概念",
+        "标题",
+        "开场",
+        "强调"
+      ],
+      "tags": [
+        "text",
+        "keyword",
+        "reveal",
+        "title",
+        "开场"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 90,
+      "requiredAssets": []
+    }
+  ],
+  "styles": [
+    {
+      "styleId": "blueprint",
+      "name": "Blueprint 科技蓝图",
+      "description": "以工程蓝图美学为灵感的科技风。深蓝底色配浅蓝线条与标注，等宽字体，模拟技术图纸的标注、尺寸线与网格。适合结构化、技术性强的内容，强调精确与严谨。",
+      "tags": [
+        "蓝图",
+        "技术",
+        "工程",
+        "等宽",
+        "标注",
+        "图纸",
+        "blueprint",
+        "technical",
+        "monospace"
+      ],
+      "recommendedScenes": [
+        "技术原理图解",
+        "数据结构与流程",
+        "对比分析（单利vs复利等）",
+        "增长趋势可视化",
+        "系统架构说明"
+      ],
+      "exampleImage": ""
+    },
+    {
+      "styleId": "engraving",
+      "name": "Engraving 铜版画/雕版插画",
+      "description": "以铜版画/雕版印刷为灵感的复古插画风。暖色纸张底、深褐墨线、密集排线与交叉线构建明暗。借鉴铜版画的排线、放大圆图与铭刻字体美学，但全部原创色彩与构图，不复制任何历史作品。",
+      "tags": [
+        "铜版画",
+        "雕版",
+        "复古",
+        "排线",
+        "插画",
+        "纸张",
+        "engraving",
+        "vintage",
+        "illustration",
+        "serif"
+      ],
+      "recommendedScenes": [
+        "博物科普与自然主题",
+        "历史与文化讲解",
+        "品牌传承与匠心故事",
+        "需要复古质感的概念图解",
+        "强调工艺与细节的内容"
+      ],
+      "exampleImage": ""
+    },
+    {
+      "styleId": "minimal-tech",
+      "name": "Minimal Tech 极简科技",
+      "description": "深色背景上的高对比极简科技风。以青蓝色高光、网格底纹、几何线条为核心，强调清晰的信息层级与冷峻的科技感。色彩克制，留白充足，动效干净利落。",
+      "tags": [
+        "极简",
+        "科技",
+        "深色",
+        "青蓝",
+        "几何",
+        "现代",
+        "clean",
+        "tech",
+        "dark"
+      ],
+      "recommendedScenes": [
+        "科技概念解释",
+        "产品功能介绍",
+        "数据可视化",
+        "开场标题",
+        "流程与步骤说明"
+      ],
+      "exampleImage": ""
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "templateId": "TEXT-001",
+  "optionalAssets": [
+    "image"
+  ],
+  "posterJpg": "poster.jpg",
+  "minDurationFrames": 60,
+  "durationFrames": 90,
+  "component": "TextReveal.tsx",
+  "name": "关键词揭示",
+  "requiredAssets": [],
+  "notUseCases": [
+    "数据对比",
+    "流程",
+    "录屏"
+  ],
+  "sourceAvailable": true,
+  "description": "白底关键词弹性入场，紫色底标展开，语境文字分层揭示。",
+  "aspectRatios": [
+    "4:3"
+  ],
+  "maxDurationFrames": 180,
+  "compositionId": "TEXT-001",
+  "useCases": [
+    "关键词",
+    "概念",
+    "标题",
+    "开场",
+    "强调"
+  ],
+  "status": "APPROVED",
+  "version": "1.1.0",
+  "previewMp4": "preview.mp4",
+  "params": [
+    {
+      "default": "复利",
+      "name": "keyword",
+      "description": "要揭示的核心词",
+      "required": true,
+      "type": "string",
+      "label": "关键词"
+    },
+    {
+      "label": "副标题",
+      "default": "",
+      "name": "subtitle",
+      "description": "关键词下方的说明文字",
+      "type": "string"
+    }
+  ],
+  "category": "TEXT",
+  "tags": [
+    "text",
+    "keyword",
+    "reveal",
+    "title",
+    "开场"
+  ]
+}

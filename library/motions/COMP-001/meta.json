@@ -1,0 +1,68 @@
+{
+  "templateId": "COMP-001",
+  "optionalAssets": [
+    "image"
+  ],
+  "posterJpg": "poster.jpg",
+  "minDurationFrames": 90,
+  "durationFrames": 120,
+  "component": "ConceptCompare.tsx",
+  "name": "左右概念对比",
+  "requiredAssets": [],
+  "notUseCases": [
+    "单一概念",
+    "流程"
+  ],
+  "sourceAvailable": true,
+  "description": "黑白双面并置，曲线分步绘制，形成清晰的机制对比。",
+  "aspectRatios": [
+    "4:3"
+  ],
+  "maxDurationFrames": 200,
+  "compositionId": "COMP-001",
+  "useCases": [
+    "对比",
+    "比较",
+    "差异",
+    "左右",
+    "VS"
+  ],
+  "status": "APPROVED",
+  "version": "1.1.0",
+  "previewMp4": "preview.mp4",
+  "params": [
+    {
+      "label": "左标签",
+      "default": "单利",
+      "name": "leftLabel",
+      "type": "string",
+      "required": true
+    },
+    {
+      "label": "右标签",
+      "default": "复利",
+      "name": "rightLabel",
+      "type": "string",
+      "required": true
+    },
+    {
+      "label": "左值",
+      "default": "线性增长",
+      "name": "leftValue",
+      "type": "string"
+    },
+    {
+      "label": "右值",
+      "default": "指数增长",
+      "name": "rightValue",
+      "type": "string"
+    }
+  ],
+  "category": "COMP",
+  "tags": [
+    "compare",
+    "vs",
+    "split",
+    "对比"
+  ]
+}
