@@ -1,0 +1,18 @@
+# Author: Codex | Created: 2026-11-24 21:27:52 +08:00 | Serve privately and preserve project and shared asset data.
+services:
+  workbench:
+    image: ${MOTION_STUDIO_IMAGE:?Set the release image}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:18000:8000"
+    volumes:
+      - project-data:/app/projects
+      - shared-assets:/app/library/assets
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://127.0.0.1:8000/api/health', timeout=3).close()"]
+      interval: 5s
+      timeout: 4s
+      retries: 8
+volumes:
+  project-data:
+  shared-assets:

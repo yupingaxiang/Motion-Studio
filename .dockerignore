@@ -1,0 +1,14 @@
+.git
+.github
+.venv
+.tmp
+.pnpm-store
+**/node_modules
+**/dist
+**/__pycache__
+projects
+library/assets
+library/video
+remotion/public/episodes
+remotion/public/scene-assets/*
+!remotion/public/scene-assets/black-grid-4x3.png

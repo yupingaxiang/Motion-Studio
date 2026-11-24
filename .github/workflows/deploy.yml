@@ -1,0 +1,46 @@
+# Author: Codex | Created: 2026-11-24 21:27:52 +08:00 | Build the selected main commit and publish it over pinned SSH.
+name: Deploy Motion Studio
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: motion-studio-production
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and smoke test
+        run: |
+          docker build -t "motion-studio:$GITHUB_SHA" .
+          docker run -d --name motion-studio-ci -p 127.0.0.1:18000:8000 "motion-studio:$GITHUB_SHA"
+          for attempt in {1..20}; do
+            if curl -fsS http://127.0.0.1:18000/api/health && curl -fsS http://127.0.0.1:18000/ >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          docker logs motion-studio-ci
+          exit 1
+      - name: Publish and verify
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d "$HOME/.ssh"
+          umask 077
+          printf '%s\n' "$DEPLOY_KEY" > "$HOME/.ssh/motion-deploy"
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$HOME/.ssh/motion-known-hosts"
+          trap 'rm -f "$HOME/.ssh/motion-deploy"' EXIT
+          opts=(-i "$HOME/.ssh/motion-deploy" -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$HOME/.ssh/motion-known-hosts")
+          endpoint="$DEPLOY_USER@$DEPLOY_HOST"
+          ssh "${opts[@]}" "$endpoint" 'mkdir -p "$HOME/motion-studio-deploy"'
+          scp "${opts[@]}" deploy/compose.yaml "$endpoint:motion-studio-deploy/compose.$GITHUB_SHA.yaml"
+          scp "${opts[@]}" deploy/release.sh "$endpoint:motion-studio-deploy/release.sh"
+          docker save "motion-studio:$GITHUB_SHA" | gzip -1 | ssh "${opts[@]}" "$endpoint" docker load
+          ssh "${opts[@]}" "$endpoint" bash motion-studio-deploy/release.sh "$GITHUB_SHA"
