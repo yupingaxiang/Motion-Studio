@@ -1,4 +1,4 @@
-# Author: Codex | Modified: 2026-11-21 15:30:00 +08:00 | Native 4:3 template protocol.
+# Author: Codex | Modified: 2026-11-24 20:19:17 +08:00 | Native 4:3 template protocol.
 """Pydantic 数据协议模型 —— Motion Studio 共享数据契约。
 
 这些模型定义了 Codex（通过 Skill + CLI）与 Web 工作台（通过 FastAPI）之间
@@ -270,6 +270,7 @@ class SceneApproval(BaseModel):
     sceneId: str
     selectedTemplateId: str = Field(default="", description="用户选中的模板，SELECTED 阶段写入")
     selectedTemplateVersion: str = ""
+    libraryCandidate: Candidate | None = None
     approvalStatus: ApprovalStatus = ApprovalStatus.PENDING
     modificationNotes: str = ""
     approvedAt: str = ""

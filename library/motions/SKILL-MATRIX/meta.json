@@ -1,0 +1,83 @@
+{
+  "templateId": "SKILL-MATRIX",
+  "name": "四项能力矩阵",
+  "description": "并列能力卡片，不使用流程箭头或绿色底色",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "KnowledgeLessons.tsx",
+  "compositionId": "SKILL-MATRIX",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "sourceAvailable": true,
+  "sourceName": "Motion Studio",
+  "sourceUrl": "",
+  "originalId": "",
+  "adaptation": "",
+  "useCases": [
+    "并列能力卡片，不使用流程箭头或绿色底色"
+  ],
+  "notUseCases": [],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 240,
+  "minDurationFrames": 120,
+  "maxDurationFrames": 900,
+  "requiredAssets": [],
+  "optionalAssets": [],
+  "params": [
+    {
+      "name": "title",
+      "type": "string",
+      "label": "title",
+      "default": "四项能力，逐项练起来",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "labels",
+      "type": "string",
+      "label": "labels",
+      "default": [
+        "提示词工程",
+        "知识库搭建",
+        "Agent 工作流",
+        "真实项目"
+      ],
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "details",
+      "type": "string",
+      "label": "details",
+      "default": [
+        "把任务说清楚",
+        "让回答有依据",
+        "把工具串起来",
+        "把方案跑起来"
+      ],
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "cueFrames",
+      "type": "string",
+      "label": "cueFrames",
+      "default": [
+        15,
+        40,
+        65,
+        90
+      ],
+      "required": false,
+      "description": ""
+    }
+  ],
+  "tags": [
+    "AI",
+    "知识讲解",
+    "4:3"
+  ],
+  "category": "COMP"
+}

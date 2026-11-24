@@ -1,4 +1,4 @@
-# Author: Codex | Modified: 2026-11-21 16:00:00 +08:00 | Scene asset binding API.
+# Author: Codex | Modified: 2026-11-24 20:20:51 +08:00 | Scene asset binding API.
 """项目路由：列表、storyboard、recommendations、状态、校验。"""
 
 from __future__ import annotations
@@ -191,3 +191,37 @@ def save_scene_edit(project_id:str,scene_id:str,body:EditRequest):
     if project_id not in proj.list_projects():raise HTTPException(404,"项目不存在")
     try:return proj.save_scene_edit(project_id,scene_id,body.edit,body.expectedRevision)
     except (ValueError,PermissionError) as exc:raise HTTPException(409,str(exc))
+
+
+class NarrationAlignmentRequest(BaseModel):
+    """Select one registered source and the storyboard revision to align."""
+    assetId: str
+    scope: str
+    storyboardRevision: int
+
+
+@router.get("/{project_id}/narration-alignment")
+def get_narration_alignment(project_id: str):
+    """Return saved source-time alignment without changing storyboard timing."""
+    from ..services.narration_alignment import read_alignment
+
+    if project_id not in proj.list_projects():
+        raise HTTPException(404, "项目不存在")
+    return read_alignment(project_id)
+
+
+@router.post("/{project_id}/narration-alignment")
+def generate_narration_alignment(project_id: str, body: NarrationAlignmentRequest):
+    """Run offline audio recognition and save the storyboard alignment sidecar."""
+    from ..services.narration_alignment import align_project
+
+    if project_id not in proj.list_projects():
+        raise HTTPException(404, "项目不存在")
+    try:
+        return align_project(project_id, body.assetId, body.scope, body.storyboardRevision)
+    except PermissionError as exc:
+        raise HTTPException(409, str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(422, str(exc)) from exc
+    except (RuntimeError, OSError) as exc:
+        raise HTTPException(503, str(exc)) from exc

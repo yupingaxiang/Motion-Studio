@@ -1,4 +1,4 @@
-/** Author: Codex | Modified: 2026-11-21 23:55:00 +08:00 | Motion Studio workspace refresh. */
+/** Author: Codex | Modified: 2026-11-24 20:00:17 +08:00 | Motion Studio workspace refresh. */
 import { useEffect, useMemo, useState } from "react";
 import { api, mediaUrl } from "../api";
 import type { TemplateMeta } from "../types";

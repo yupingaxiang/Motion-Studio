@@ -1,4 +1,4 @@
-# Author: Codex | Modified: 2026-11-21 23:55:00 +08:00 | Project media binding.
+# Author: Codex | Modified: 2026-11-24 20:19:17 +08:00 | Project media binding and preservation of locked recommendation records.
 """项目管理服务：storyboard / recommendations / approvals 的读写，
 含版本号、原子写入与冲突校验，防止 Codex 与 Web 同时写损坏数据。
 
@@ -19,6 +19,7 @@ from typing import Any
 from ..models import (
     ApprovalStatus,
     Approvals,
+    Candidate,
     atomic_write_json,
     now_iso,
     read_json_model,
@@ -119,21 +120,23 @@ def recommendations_revision(project_id: str) -> int:
 
 
 def write_recommendations(recs: Recommendations) -> Path:
-    """Codex 写入推荐。若某分镜已 APPROVED 且非用户要求重选，拒绝覆盖。"""
+    """原子写入推荐；已确认候选必须完整且逐字段不变，否则抛出 PermissionError。"""
     # 冲突校验：读取现有 approvals
     approvals = read_approvals_safe(recs.projectId)
     locked_scenes = {
         a.sceneId for a in approvals.approvals if a.locked and a.approvalStatus == ApprovalStatus.APPROVED.value
     }
-    for scene_rec in recs.scenes:
-        if scene_rec.sceneId in locked_scenes:
-            # 检查该分镜是否处于 RECOMMEND_AGAIN（用户明确要求重选）
-            ap = next((a for a in approvals.approvals if a.sceneId == scene_rec.sceneId), None)
-            if ap and ap.approvalStatus == ApprovalStatus.RECOMMEND_AGAIN.value:
-                # 用户要求重选，允许覆盖，但记录原选择以便回滚
+    if locked_scenes:
+        try:
+            old = {scene.sceneId: scene for scene in read_recommendations(recs.projectId).scenes}
+        except FileNotFoundError:
+            old = {}
+        incoming = {scene.sceneId: scene for scene in recs.scenes}
+        for scene_id in locked_scenes:
+            if scene_id in old and scene_id in incoming and old[scene_id].model_dump() == incoming[scene_id].model_dump():
                 continue
             raise PermissionError(
-                f"分镜 {scene_rec.sceneId} 已确认（APPROVED），"
+                f"分镜 {scene_id} 已确认（APPROVED），"
                 f"用户未要求重新选择，Codex 不可静默覆盖其候选。"
             )
     recs.updatedAt = now_iso()
@@ -179,14 +182,42 @@ def select_candidate(
     template_version: str,
     based_on_rev: int,
 ) -> Approvals:
-    """用户选中某候选（SELECTED，尚未确认）。这是独立于确认的操作。"""
+    """按当前推荐版本选中模板；非推荐项记录为手动选择，已锁定分镜不可修改。"""
     app = read_approvals_safe(project_id)
     existing = next((a for a in app.approvals if a.sceneId == scene_id), None)
     if existing and existing.locked:
         raise PermissionError(
             f"分镜 {scene_id} 已确认锁定，无法更改选择。需用户明确要求重新选择。"
         )
+    from . import library as lib
+
+    if not any(scene.sceneId == scene_id for scene in read_storyboard(project_id).scenes):
+        raise ValueError("分镜不存在")
+    try:
+        recs = read_recommendations(project_id)
+    except FileNotFoundError:
+        recs = None
+    if based_on_rev != (recs.recommendationRevision if recs else 0):
+        raise PermissionError("推荐已更新，请刷新后再选")
+    meta = lib.get_template(template_id)
+    if not meta or meta.version != template_version:
+        raise ValueError("模板不存在或版本已更新")
+    folder = lib.motions_dir() / template_id
+    root = lib.library_root().parent
+    if not (folder / meta.previewMp4).is_file():
+        raise ValueError("模板没有可播放的预览")
+    recommended = bool(recs and any(
+        c.templateId == template_id and c.templateVersion == template_version
+        for row in recs.scenes if row.sceneId == scene_id for c in row.candidates
+    ))
     ap = existing or SceneApproval(sceneId=scene_id, basedOnRecommendationRevision=based_on_rev)
+    ap.libraryCandidate = None if recommended else Candidate(
+        templateId=template_id, templateVersion=template_version,
+        previewPath=(folder / meta.previewMp4).relative_to(root).as_posix(),
+        posterPath=(folder / meta.posterJpg).relative_to(root).as_posix(),
+        recommendationReason="从模板库手动选择", requiredAssets=meta.requiredAssets,
+        compatibility="needs-assets" if meta.requiredAssets else "full",
+    )
     ap.selectedTemplateId = template_id
     ap.selectedTemplateVersion = template_version
     ap.approvalStatus = ApprovalStatus.SELECTED.value
@@ -263,6 +294,7 @@ def mark_no_motion(project_id: str, scene_id: str) -> Approvals:
         ap = SceneApproval(sceneId=scene_id)
         app.approvals.append(ap)
     ap.approvalStatus = ApprovalStatus.NO_MOTION.value
+    ap.libraryCandidate = None
     ap.selectedTemplateId = ""
     ap.selectedTemplateVersion = ""
     ap.locked = True
@@ -415,6 +447,8 @@ def validate_project(project_id: str) -> dict[str, Any]:
                 if a.sceneId not in sb_ids:
                     continue
                 if a.approvalStatus in (ApprovalStatus.SELECTED.value, ApprovalStatus.APPROVED.value):
+                    if a.libraryCandidate:
+                        continue
                     sr = next((r for r in rec.scenes if r.sceneId == a.sceneId), None)
                     if sr is None:
                         errors.append(f"分镜 {a.sceneId} 已选中但无推荐记录")
@@ -488,6 +522,8 @@ def review_brief(project_id: str) -> dict[str, Any]:
         rec = next((r for r in recs.scenes if r.sceneId == scene.sceneId), None) if recs else None
         candidates = [c.model_dump() for c in rec.candidates] if rec else []
         state = ap.approvalStatus if ap else "PENDING"
+        if ap and ap.libraryCandidate and ap.libraryCandidate.templateId == ap.selectedTemplateId:
+            candidates.append(ap.libraryCandidate.model_dump())
         if state == "APPROVED":
             chosen = next((c for c in candidates if c["templateId"] == ap.selectedTemplateId and c["templateVersion"] == ap.selectedTemplateVersion), None)
             meta = lib.get_template(ap.selectedTemplateId)
@@ -513,7 +549,11 @@ def review_brief(project_id: str) -> dict[str, Any]:
     import json
     output_reviews_path = project_dir(project_id) / "output-reviews.json"
     output_reviews = json.loads(output_reviews_path.read_text(encoding="utf-8-sig")) if output_reviews_path.exists() else {"reviews":[]}
-    return {"sceneEdits":read_scene_edits(project_id),"outputReviews":output_reviews["reviews"],"projectId":project_id,"storyboardRevision":sb.projectRevision,
+    from .narration_alignment import read_alignment
+    alignment = read_alignment(project_id)
+    if alignment:
+        alignment.pop("words", None)
+    return {"narrationAlignment":alignment,"sceneEdits":read_scene_edits(project_id),"outputReviews":output_reviews["reviews"],"projectId":project_id,"storyboardRevision":sb.projectRevision,
             "recommendationRevision":recs.recommendationRevision if recs else 0,
             "recommendationsStale":stale,"nextAction":action,
             "allConfirmed":status["allConfirmed"],"issues":issues,"scenes":rows,

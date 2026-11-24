@@ -1,4 +1,4 @@
-/** Author: Codex | Modified: 2026-11-21 16:00:00 +08:00 | Versioned scene asset API. */
+/** Author: Codex | Modified: 2026-11-24 20:22:22 +08:00 | Versioned scene asset API. */
 /** API 客户端：封装所有后端调用。 */
 
 import type {
@@ -54,6 +54,8 @@ export const api = {
 
   bindAsset: (projectId: string, sceneId: string, assetId: string, scope: string, expectedRevision: number) => json<Storyboard>(fetch(`/api/projects/${encodeURIComponent(projectId)}/scenes/${encodeURIComponent(sceneId)}/asset`, {method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({assetId,scope,expectedRevision})})),
 
+  getNarrationAlignment: (id:string) => json<import("../types").NarrationAlignment|null>(fetch(`/api/projects/${encodeURIComponent(id)}/narration-alignment`)),
+  alignNarration: (id:string, assetId:string, scope:string, storyboardRevision:number) => json<import("../types").NarrationAlignment>(fetch(`/api/projects/${encodeURIComponent(id)}/narration-alignment`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({assetId,scope,storyboardRevision})})),
   getReviewBrief: (projectId:string) => json<any>(fetch(`/api/projects/${encodeURIComponent(projectId)}/review-brief`)),
   getOutputs: (projectId:string) => json<{outputs:{file:string;path:string;sizeBytes:number;notes:string}[]}>(fetch(`/api/projects/${encodeURIComponent(projectId)}/outputs`)),
   saveOutputReview: (projectId:string,file:string,notes:string) => json<any>(fetch(`/api/projects/${encodeURIComponent(projectId)}/output-review`,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({file,notes})})),

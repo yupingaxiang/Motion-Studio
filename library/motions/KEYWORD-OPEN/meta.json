@@ -1,0 +1,71 @@
+{
+  "templateId": "KEYWORD-OPEN",
+  "name": "开场关键词聚焦",
+  "description": "突出受众、原声数字与量身打造，不使用流程卡片。",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "KeywordOpening.tsx",
+  "compositionId": "KEYWORD-OPEN",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "sourceAvailable": true,
+  "sourceName": "Motion Studio",
+  "sourceUrl": "",
+  "originalId": "",
+  "adaptation": "",
+  "useCases": [
+    "开场钩子",
+    "关键词强调"
+  ],
+  "notUseCases": [],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 240,
+  "minDurationFrames": 120,
+  "maxDurationFrames": 900,
+  "requiredAssets": [],
+  "optionalAssets": [],
+  "params": [
+    {
+      "name": "keywords",
+      "type": "string",
+      "label": "关键词",
+      "default": [
+        "应届生",
+        "35,000",
+        "土木人"
+      ],
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "closing",
+      "type": "string",
+      "label": "收束文案",
+      "default": "为土木人，量身打造",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "cueFrames",
+      "type": "string",
+      "label": "出现帧",
+      "default": [
+        0,
+        42,
+        100,
+        144
+      ],
+      "required": false,
+      "description": ""
+    }
+  ],
+  "tags": [
+    "开场",
+    "关键词",
+    "受众",
+    "强调"
+  ],
+  "category": "TEXT"
+}

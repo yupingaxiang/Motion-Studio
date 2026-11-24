@@ -1,4 +1,4 @@
-/** Author: Codex | Modified: 2026-11-21 18:00:00 +08:00 | External template attribution. */
+/** Author: Codex | Modified: 2026-11-24 20:22:22 +08:00 | External template attribution. */
 /** 前端类型定义，与后端 Pydantic 模型对应。 */
 
 export interface TemplateParam {
@@ -146,10 +146,27 @@ export type ApprovalStatus =
   | "RECOMMEND_AGAIN"
   | "NO_MOTION";
 
+export interface NarrationTiming {
+  startMs: number | null;
+  endMs: number | null;
+  coverage: number;
+  status: "matched" | "review" | "unmatched";
+}
+
+export interface NarrationAlignment {
+  assetId: string;
+  assetName: string;
+  scope: string;
+  stale: boolean;
+  storyboardRevision: number;
+  scenes: (NarrationTiming & {sceneId:string; sentences:(NarrationTiming & {text:string})[]})[];
+}
+
 export interface SceneApproval {
   sceneId: string;
   selectedTemplateId: string;
   selectedTemplateVersion: string;
+  libraryCandidate?: Candidate | null;
   approvalStatus: ApprovalStatus;
   modificationNotes: string;
   approvedAt: string;

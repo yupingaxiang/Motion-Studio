@@ -1,0 +1,81 @@
+{
+  "templateId": "KNOWLEDGE-LOOKUP",
+  "name": "知识库检索回答",
+  "description": "连接企业知识库，提问触发检索，依据资料回答",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "KnowledgeLessons.tsx",
+  "compositionId": "KNOWLEDGE-LOOKUP",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "sourceAvailable": true,
+  "sourceName": "Motion Studio",
+  "sourceUrl": "",
+  "originalId": "",
+  "adaptation": "",
+  "useCases": [
+    "连接企业知识库，提问触发检索，依据资料回答"
+  ],
+  "notUseCases": [],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 270,
+  "minDurationFrames": 120,
+  "maxDurationFrames": 900,
+  "requiredAssets": [],
+  "optionalAssets": [],
+  "params": [
+    {
+      "name": "title",
+      "type": "string",
+      "label": "title",
+      "default": "连接知识库，让回答有据可依",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "question",
+      "type": "string",
+      "label": "question",
+      "default": "项目验收需要哪些资料？",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "document",
+      "type": "string",
+      "label": "document",
+      "default": "验收清单：检查记录、材料证明、签字确认",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "answer",
+      "type": "string",
+      "label": "answer",
+      "default": "依据验收清单：准备检查记录、材料证明与签字确认。",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "cueFrames",
+      "type": "string",
+      "label": "cueFrames",
+      "default": [
+        15,
+        70,
+        125,
+        190
+      ],
+      "required": false,
+      "description": ""
+    }
+  ],
+  "tags": [
+    "AI",
+    "知识讲解",
+    "4:3"
+  ],
+  "category": "FLOW"
+}

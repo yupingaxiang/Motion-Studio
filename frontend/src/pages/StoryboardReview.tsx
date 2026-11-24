@@ -1,4 +1,4 @@
-/** Author: Codex | Modified: 2026-11-21 15:30:00 +08:00 | Matrix candidate review. */
+/** Author: Codex | Modified: 2026-11-24 20:22:22 +08:00 | Matrix candidate review. */
 ﻿import { useEffect, useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { api, mediaUrl } from "../api";
@@ -8,7 +8,9 @@ import type {
   Approvals,
   SceneApproval,
   Candidate,
+  TemplateMeta,
 } from "../types";
+import { NarrationAlignmentPanel } from "../components/NarrationAlignmentPanel";
 import { SceneMedia } from "../components/SceneMedia";
 import { VideoPlayer } from "../components/VideoPlayer";
 
@@ -16,6 +18,8 @@ import { VideoPlayer } from "../components/VideoPlayer";
 export function StoryboardReview() {
   const { projectId } = useParams<{ projectId: string }>();
   const [storyboard, setStoryboard] = useState<Storyboard | null>(null);
+  const [library, setLibrary] = useState<TemplateMeta[]>([]);
+  const [libraryId, setLibraryId] = useState("");
   const [recs, setRecs] = useState<Recommendations | null>(null);
   const [approvals, setApprovals] = useState<Approvals | null>(null);
   const [selectedScene, setSelectedScene] = useState<string | null>(null);
@@ -33,9 +37,11 @@ export function StoryboardReview() {
         api.getTemplates(),
       ]);
       setStoryboard(sb);
+      setLibrary(templates.templates);
       const available = new Set(templates.templates.map(t => t.templateId));
       setRecs({...rc, scenes:rc.scenes.map(r=>({...r,candidates:r.candidates.filter(c=>available.has(c.templateId))}))});
       setApprovals(ap);
+      setError("");
       if (!selectedScene && sb.scenes.length > 0) {
         setSelectedScene(sb.scenes[0].sceneId);
       }
@@ -59,8 +65,13 @@ export function StoryboardReview() {
   const sceneRec = recs?.scenes.find((r) => r.sceneId === currentScene?.sceneId);
   const sceneApproval = approvals?.approvals.find((a) => a.sceneId === currentScene?.sceneId);
 
+  const libraryTemplate = library.find(t=>t.templateId===libraryId);
+  const recommended = sceneRec?.candidates ?? [];
+  const manual = sceneApproval?.libraryCandidate;
+  const visibleCandidates = manual && !recommended.some(c=>c.templateId===manual.templateId && c.templateVersion===manual.templateVersion) ? [...recommended,manual] : recommended;
+
   // 审核操作
-  const doSelect = async (c: Candidate) => {
+  const doSelect = async (c: Pick<Candidate, "templateId" | "templateVersion">) => {
     if (!projectId || !currentScene || !recs) return;
     try {
       const ap = await api.select({
@@ -214,7 +225,19 @@ export function StoryboardReview() {
             </p>
           </div>
 
-          {(!sceneRec || sceneRec.candidates.length === 0) && (
+          {projectId && currentScene && <NarrationAlignmentPanel key={projectId} projectId={projectId} sceneId={currentScene.sceneId} revision={storyboard.projectRevision}/>}
+          <details className="mb-4 rounded-xl border border-ms-border bg-ms-panel p-3">
+            <summary className="cursor-pointer font-semibold">从全库选动效</summary>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <select aria-label="全库动效" value={libraryId} onChange={e=>setLibraryId(e.target.value)} className="rounded bg-ms-border p-2">
+                <option value="">选择模板</option>
+                {library.filter(t=>t.previewMp4).map(t=><option key={t.templateId} value={t.templateId}>{t.name} · {t.templateId}</option>)}
+              </select>
+              <button className="rounded bg-ms-border px-3 disabled:opacity-40" disabled={!libraryTemplate || sceneApproval?.locked || !currentScene} onClick={()=>libraryTemplate && doSelect({templateId:libraryTemplate.templateId,templateVersion:libraryTemplate.version})}>选用此模板</button>
+            </div>
+            {libraryTemplate?.previewMp4 && <div className="mt-3 max-w-sm"><VideoPlayer key={libraryTemplate.templateId} src={mediaUrl(libraryTemplate.previewMp4.replace(/\\/g,"/"))}/></div>}
+          </details>
+          {visibleCandidates.length === 0 && (
             <div className="text-center py-12 text-ms-muted">
               <p>该分镜暂无候选推荐。</p>
               <p className="text-xs mt-2">Codex 需通过 Skill 调用 <code className="text-ms-accent">publish-recommendations</code> 写入候选。</p>
@@ -222,8 +245,8 @@ export function StoryboardReview() {
           )}
 
           <div className="candidate-matrix">
-            {sceneRec?.candidates.map((c, idx) => {
-              const isSelected = sceneApproval?.selectedTemplateId === c.templateId;
+            {visibleCandidates.map((c, idx) => {
+              const isSelected = sceneApproval?.selectedTemplateId === c.templateId && sceneApproval.selectedTemplateVersion === c.templateVersion;
               const isApproved = sceneApproval?.approvalStatus === "APPROVED" && isSelected;
               const mp4Url = mediaUrl(c.previewPath);
               const posterUrl = c.posterPath ? mediaUrl(c.posterPath) : "";
@@ -259,7 +282,7 @@ export function StoryboardReview() {
                         ))}
                       </div>
                       <div className="text-xs text-ms-muted">
-                        得分 {(c.score * 100).toFixed(0)} · 源码可用
+                        {c === manual ? "手动选择" : `推荐得分 ${(c.score * 100).toFixed(0)}`}
                       </div>
                       {/* 选择按钮 */}
                       <div className="mt-3 flex gap-2">

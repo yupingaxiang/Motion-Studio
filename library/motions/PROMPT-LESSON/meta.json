@@ -1,0 +1,88 @@
+{
+  "templateId": "PROMPT-LESSON",
+  "name": "提示词到指定结果",
+  "description": "输入任务、理解要求，再生成满足格式的示意结果",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "KnowledgeLessons.tsx",
+  "compositionId": "PROMPT-LESSON",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "sourceAvailable": true,
+  "sourceName": "Motion Studio",
+  "sourceUrl": "",
+  "originalId": "",
+  "adaptation": "",
+  "useCases": [
+    "输入任务、理解要求，再生成满足格式的示意结果"
+  ],
+  "notUseCases": [],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 300,
+  "minDurationFrames": 120,
+  "maxDurationFrames": 900,
+  "requiredAssets": [],
+  "optionalAssets": [],
+  "params": [
+    {
+      "name": "title",
+      "type": "string",
+      "label": "title",
+      "default": "提示词 → 理解要求 → 按要求输出",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "prompt",
+      "type": "string",
+      "label": "prompt",
+      "default": "把今天的施工记录整理成日报",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "requirements",
+      "type": "string",
+      "label": "requirements",
+      "default": [
+        "按完成 / 问题 / 计划分组",
+        "每组一句，保留真实信息"
+      ],
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "result",
+      "type": "string",
+      "label": "result",
+      "default": [
+        "完成：3号楼基础验收",
+        "问题：材料到场延迟",
+        "计划：明日复核施工进度"
+      ],
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "cueFrames",
+      "type": "string",
+      "label": "cueFrames",
+      "default": [
+        12,
+        70,
+        135,
+        205
+      ],
+      "required": false,
+      "description": ""
+    }
+  ],
+  "tags": [
+    "AI",
+    "知识讲解",
+    "4:3"
+  ],
+  "category": "FLOW"
+}
