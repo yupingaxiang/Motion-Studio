@@ -1,0 +1,31 @@
+{
+  "templateId": "ASSET-SHOWCASE",
+  "name": "素材展台",
+  "description": "白色展框平滑划入，整体轻推近，留出阅读时间，再侧滑退出。支持图片和静音短视频，可在全图入场后按标注推近重点。",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "AssetShowcase.tsx",
+  "compositionId": "ASSET-SHOWCASE",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "useCases": ["界面截图", "产品图", "短录屏"],
+  "notUseCases": ["需要保留素材原声"],
+  "aspectRatios": ["4:3"],
+  "durationFrames": 156,
+  "minDurationFrames": 156,
+  "maxDurationFrames": 156,
+  "requiredAssets": [],
+  "optionalAssets": ["image", "video"],
+  "params": [
+    {"name":"mediaSrc","type":"string","label":"素材路径","default":"fred-examples/FLOW-001.jpg","description":"Remotion public 相对路径。"},
+    {"name":"mediaType","type":"string","label":"素材类型","default":"image","description":"图片填 image，静音短视频填 video；默认时长建议用至少 4.4 秒的素材。"},
+    {"name":"title","type":"string","label":"标题","default":"画面里的素材"},
+    {"name":"caption","type":"string","label":"素材说明","default":"示例 · Motion Studio 项目素材"},
+    {"name":"focusX","type":"number","label":"重点左边（%）","default":0,"min":0,"max":100,"description":"百分比以展框内的素材显示区为准（包含留边）。"},
+    {"name":"focusY","type":"number","label":"重点上边（%）","default":0,"min":0,"max":100},
+    {"name":"focusWidth","type":"number","label":"重点宽度（%）","default":0,"min":0,"max":100,"description":"宽或高为 0 时不启用聚焦。"},
+    {"name":"focusHeight","type":"number","label":"重点高度（%）","default":0,"min":0,"max":100}
+  ],
+  "tags": ["素材展示", "截图", "实拍", "录屏", "白色卡片", "推近", "重点聚焦"],
+  "category": "DATA"
+}

@@ -1,0 +1,26 @@
+{
+  "templateId": "FILM-REEL",
+  "name": "胶片轮播",
+  "description": "图片胶片从固定的矩形框后横向滚过，先加速再减速，停稳后模拟点击，选中的素材放大到画面中央。",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "FilmReel.tsx",
+  "compositionId": "FILM-REEL",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "useCases": ["多张截图轮播", "候选方案揭晓", "产品图挑选"],
+  "notUseCases": ["真实随机抽奖"],
+  "aspectRatios": ["4:3"],
+  "durationFrames": 198,
+  "minDurationFrames": 198,
+  "maxDurationFrames": 198,
+  "requiredAssets": [],
+  "optionalAssets": ["image"],
+  "params": [
+    {"name":"srcs","type":"array","label":"图片列表","default":["fred-examples/TEXT-001.jpg","fred-examples/FLOW-001.jpg","fred-examples/COMP-001.jpg","fred-examples/DATA-001.jpg"],"description":"按顺序填写 Remotion public 相对路径。"},
+    {"name":"selected","type":"number","label":"停在哪一张","default":3,"min":1,"description":"从 1 开始，超出范围时停在最后一张。"},
+    {"name":"title","type":"string","label":"标题","default":"胶片轮播"}
+  ],
+  "tags": ["胶片", "轮播", "素材展示", "抽奖机", "变速"],
+  "category": "DATA"
+}

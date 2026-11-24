@@ -1,7 +1,36 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-21T15:18:01.406977+00:00",
+  "generatedAt": "2026-11-24T12:14:41.890867+00:00",
   "templates": [
+    {
+      "templateId": "ASSET-SHOWCASE",
+      "name": "素材展台",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "DATA",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "界面截图",
+        "产品图",
+        "短录屏"
+      ],
+      "tags": [
+        "素材展示",
+        "截图",
+        "实拍",
+        "录屏",
+        "白色卡片",
+        "推近",
+        "重点聚焦"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 156,
+      "requiredAssets": []
+    },
     {
       "templateId": "COMP-001",
       "name": "左右概念对比",
@@ -59,6 +88,33 @@
         "4:3"
       ],
       "durationFrames": 150,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "FILM-REEL",
+      "name": "胶片轮播",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "DATA",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "多张截图轮播",
+        "候选方案揭晓",
+        "产品图挑选"
+      ],
+      "tags": [
+        "胶片",
+        "轮播",
+        "素材展示",
+        "抽奖机",
+        "变速"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 198,
       "requiredAssets": []
     },
     {
@@ -222,6 +278,54 @@
       "requiredAssets": []
     },
     {
+      "templateId": "KEYWORD-OPEN",
+      "name": "开场关键词聚焦",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "TEXT",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "开场钩子",
+        "关键词强调"
+      ],
+      "tags": [
+        "开场",
+        "关键词",
+        "受众",
+        "强调"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 240,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "KNOWLEDGE-LOOKUP",
+      "name": "知识库检索回答",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "FLOW",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "连接企业知识库，提问触发检索，依据资料回答"
+      ],
+      "tags": [
+        "AI",
+        "知识讲解",
+        "4:3"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 270,
+      "requiredAssets": []
+    },
+    {
       "templateId": "MEDIA-001",
       "name": "素材快切 · 定格展开",
       "version": "1.0.0",
@@ -296,7 +400,11 @@
         "真人口播",
         "画中画",
         "右下角",
-        "进入讲解"
+        "进入讲解",
+        "口播联动",
+        "知识点强调",
+        "轻微回弹",
+        "持续小窗"
       ],
       "aspectRatios": [
         "4:3"
@@ -334,6 +442,83 @@
       "requiredAssets": [
         "video"
       ]
+    },
+    {
+      "templateId": "PROMPT-LESSON",
+      "name": "提示词到指定结果",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "FLOW",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "输入任务、理解要求，再生成满足格式的示意结果"
+      ],
+      "tags": [
+        "AI",
+        "知识讲解",
+        "4:3"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 300,
+      "requiredAssets": []
+    },
+    {
+      "templateId": "SCREENSHOT-FOCUS",
+      "name": "截图定点聚焦",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "DATA",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "界面截图讲解",
+        "图表数字强调",
+        "局部细节聚焦"
+      ],
+      "tags": [
+        "截图",
+        "缩放",
+        "定点推近",
+        "聚光",
+        "蒙版",
+        "变速",
+        "重点突出"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 192,
+      "requiredAssets": [
+        "image"
+      ]
+    },
+    {
+      "templateId": "SKILL-MATRIX",
+      "name": "四项能力矩阵",
+      "version": "1.0.0",
+      "status": "APPROVED",
+      "category": "COMP",
+      "previewMp4": "preview.mp4",
+      "posterJpg": "poster.jpg",
+      "sourceAvailable": true,
+      "useCases": [
+        "并列能力卡片，不使用流程箭头或绿色底色"
+      ],
+      "tags": [
+        "AI",
+        "知识讲解",
+        "4:3"
+      ],
+      "aspectRatios": [
+        "4:3"
+      ],
+      "durationFrames": 240,
+      "requiredAssets": []
     },
     {
       "templateId": "STICKER-001",

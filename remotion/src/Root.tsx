@@ -1,4 +1,4 @@
-/** Author: Codex | Modified: 2026-11-21 23:55:00 +08:00 | Four native 4:3 templates; obsolete compositions removed. */
+/** Author: Codex | Modified: 2026-11-24 20:13:29 +08:00 | Register templates and continuous-source approved episode rendering. */
 /**
  * Motion Studio Remotion 入口。
  * 注册四个 4:3 动效组件。
@@ -23,12 +23,28 @@ import {NumberCounter,MediaFlash,CounterFlashIntro} from "./components/CounterFl
 import {StickerExplainer} from "./components/StickerExplainer";
 import {PresenterEnter,PresenterReturn} from "./components/PresenterTransition";
 import {EditableScene} from "./components/EditableScene";
+import {SkillMatrix,PromptLesson,KnowledgeLookup} from "./components/KnowledgeLessons";
+import {KeywordOpening} from "./components/KeywordOpening";
+import {ApprovedEpisode} from "./components/ApprovedEpisode";
+import {LayeredPresenterDemo} from "./components/LayeredPresenterDemo";
+import {ScreenshotFocus,screenshotFocusDefaults} from "./components/ScreenshotFocus";
+import {AssetShowcase,assetShowcaseDefaults} from "./components/AssetShowcase";
+import {FilmReel,filmReelDefaults} from "./components/FilmReel";
 const FPS = 30;
 
 /** Register real previews at their native output dimensions. */
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition id="APPROVED-EPISODE" component={ApprovedEpisode} durationInFrames={4624} fps={30} width={1440} height={1080} defaultProps={{presenterSrc:"",sections:[],durationFrames:4624,enterAt:13,returnAt:4507}} calculateMetadata={({props})=>({durationInFrames:props.durationFrames})}/>
+      <Composition id="LAYERED-PRESENTER-DEMO" component={LayeredPresenterDemo} durationInFrames={192} fps={30} width={1440} height={1080} defaultProps={{presenterSrc:"",cueFrames:[24,61,98,135]}}/>
+      <Composition id="FILM-REEL" component={FilmReel} durationInFrames={396} fps={60} width={1440} height={1080} defaultProps={filmReelDefaults}/>
+      <Composition id="ASSET-SHOWCASE" component={AssetShowcase} durationInFrames={312} fps={60} width={1440} height={1080} defaultProps={assetShowcaseDefaults}/>
+      <Composition id="SCREENSHOT-FOCUS" component={ScreenshotFocus} durationInFrames={384} fps={60} width={1440} height={1080} defaultProps={screenshotFocusDefaults}/>
+      <Composition id="KEYWORD-OPEN" component={KeywordOpening} durationInFrames={240} fps={30} width={1440} height={1080}/>
+      <Composition id="SKILL-MATRIX" component={SkillMatrix} durationInFrames={240} fps={30} width={1440} height={1080}/>
+      <Composition id="PROMPT-LESSON" component={PromptLesson} durationInFrames={300} fps={30} width={1440} height={1080}/>
+      <Composition id="KNOWLEDGE-LOOKUP" component={KnowledgeLookup} durationInFrames={270} fps={30} width={1440} height={1080}/>
       <Composition id="SCENE-EDIT" component={EditableScene} durationInFrames={150} fps={30} width={1440} height={1080} defaultProps={{templateId:"TEXT-001",content:{keyword:"实时编辑"},layout:{x:0,y:0,scale:1,transparent:false},startMs:0,endMs:5000}} calculateMetadata={({props})=>({durationInFrames:Math.max(1,Math.ceil((props.sceneDurationMs??props.endMs)*.03))})}/>
       <Composition id="PRESENTER-IN" component={PresenterEnter} durationInFrames={180} fps={30} width={1440} height={1080}/>
       <Composition id="PRESENTER-OUT" component={PresenterReturn} durationInFrames={180} fps={30} width={1440} height={1080}/>

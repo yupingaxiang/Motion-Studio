@@ -1,0 +1,86 @@
+{
+  "templateId": "SCREENSHOT-FOCUS",
+  "name": "截图定点聚焦",
+  "description": "截图侧向划入，镜头变速斜推，蒙版压暗外围，停留后回到全图。",
+  "version": "1.0.0",
+  "status": "APPROVED",
+  "component": "ScreenshotFocus.tsx",
+  "compositionId": "SCREENSHOT-FOCUS",
+  "previewMp4": "preview.mp4",
+  "posterJpg": "poster.jpg",
+  "useCases": [
+    "界面截图讲解",
+    "图表数字强调",
+    "局部细节聚焦"
+  ],
+  "notUseCases": [
+    "依赖实时跟踪的移动目标"
+  ],
+  "aspectRatios": [
+    "4:3"
+  ],
+  "durationFrames": 192,
+  "minDurationFrames": 192,
+  "maxDurationFrames": 192,
+  "requiredAssets": [
+    "image"
+  ],
+  "optionalAssets": [],
+  "params": [
+    {
+      "name": "imageSrc",
+      "type": "string",
+      "label": "截图（Remotion public 相对路径）",
+      "default": "",
+      "description": "留空使用自绘示例。重点坐标相对于整张 992×570 显示区。"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "label": "画面标题",
+      "default": "这条数据怎么看？"
+    },
+    {
+      "name": "targetX",
+      "type": "number",
+      "label": "重点左边（%）",
+      "default": 58,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "name": "targetY",
+      "type": "number",
+      "label": "重点上边（%）",
+      "default": 33,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "name": "targetWidth",
+      "type": "number",
+      "label": "重点宽度（%）",
+      "default": 24,
+      "min": 5,
+      "max": 75
+    },
+    {
+      "name": "targetHeight",
+      "type": "number",
+      "label": "重点高度（%）",
+      "default": 19,
+      "min": 5,
+      "max": 75
+    }
+  ],
+  "tags": [
+    "截图",
+    "缩放",
+    "定点推近",
+    "聚光",
+    "蒙版",
+    "变速",
+    "重点突出"
+  ],
+  "category": "DATA"
+}
